@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="SKN Quant Finance — studencki klub łączący finanse, matematykę i kod."
+    />
+    <meta name="theme-color" content="#050713" />
+    <title>SKN Quant Finance — Modeluj. Testuj. Kwestionuj.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Manrope:wght@400;500;600;700&family=Nunito:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <section class="quant-intro" id="quantIntro" aria-label="AGH Quant Finance">
+      <div class="intro-grid" aria-hidden="true"></div>
+      <canvas
+        id="quantIntroCanvas"
+        role="img"
+        aria-label="Animacja zaokrąglonych cyfr 3D układających się w napis AGH Quant Finance"
+      ></canvas>
+      <div class="intro-status" aria-hidden="true">
+        <span>AGH / QF DATA OBJECT</span>
+        <span id="introPhase">ASSEMBLING DATA</span>
+      </div>
+      <a class="intro-scroll" href="#top">Przejdź dalej <span>↓</span></a>
+    </section>
+
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="brand" href="#quantIntro" aria-label="SKN Quant Finance — strona główna">
+        <span class="brand-mark" aria-hidden="true">Q<span>∴</span></span>
+        <span class="brand-copy"><strong>SKN</strong> QUANT FINANCE</span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Główna nawigacja">
+        <a href="#o-nas">O nas</a>
+        <a href="#lab">Quant lab</a>
+        <a href="#program">Program</a>
+        <a href="#projekty">Projekty</a>
+      </nav>
+
+      <a class="button button-small button-outline header-cta" href="#dolacz">Dołącz do nas <span>↗</span></a>
+      <button class="menu-toggle" type="button" aria-label="Otwórz menu" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="hero section-shell" aria-labelledby="hero-title">
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="market-dots" aria-hidden="true"></div>
+
+        <div class="hero-copy">
+          <p class="eyebrow reveal"><span class="status-dot"></span> REKRUTACJA // JESIEŃ 2026</p>
+          <h1 id="hero-title" class="reveal">
+            Modeluj rynek.<br />
+            <span>Testuj hipotezy.</span><br />
+            Kwestionuj wszystko.
+          </h1>
+          <p class="hero-lead reveal">
+            Łączymy finanse, matematykę i kod. Budujemy modele,
+            analizujemy dane i sprawdzamy, co naprawdę działa na rynku.
+          </p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary" href="#dolacz">Dołącz do zespołu <span>↗</span></a>
+            <a class="text-link" href="#projekty">Zobacz projekty <span>↓</span></a>
+          </div>
+        </div>
+
+        <div class="hero-viz reveal" aria-label="Animowana symulacja wartości portfela">
+          <div class="terminal-bar">
+            <div class="terminal-title">
+              <span class="terminal-dot"></span>
+              <span>QF_LAB / PORTFOLIO_01</span>
+            </div>
+            <span class="live-label">LIVE SIM</span>
+          </div>
+          <div class="chart-meta">
+            <div>
+              <span class="meta-label">EQUITY</span>
+              <strong id="equityValue">128 420,72</strong>
+              <span class="currency">PLN</span>
+            </div>
+            <div class="chart-return"><span>↗</span> +18,42%</div>
+          </div>
+          <div class="chart-wrap">
+            <svg id="heroChart" viewBox="0 0 720 350" role="img" aria-labelledby="chartTitle chartDesc">
+              <title id="chartTitle">Symulowana krzywa wartości portfela</title>
+              <desc id="chartDesc">Wartość portfela rośnie ze zmiennością od stycznia do grudnia.</desc>
+              <defs>
+                <linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#8b7cff" stop-opacity="0.32" />
+                  <stop offset="72%" stop-color="#596dff" stop-opacity="0.08" />
+                  <stop offset="100%" stop-color="#4edfff" stop-opacity="0" />
+                </linearGradient>
+                <linearGradient id="lineGradient" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0%" stop-color="#7161ff" />
+                  <stop offset="62%" stop-color="#9a8dff" />
+                  <stop offset="100%" stop-color="#55dfff" />
+                </linearGradient>
+                <filter id="lineGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="3" result="blur" />
+                  <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+                </filter>
+              </defs>
+              <g class="chart-grid-lines"></g>
+              <path class="chart-area" fill="url(#areaGradient)" />
+              <path class="chart-benchmark" />
+              <path class="chart-line-glow" />
+              <path class="chart-line" />
+              <g class="chart-axis-labels"></g>
+              <g class="chart-focus">
+                <line class="focus-line" y1="30" y2="310" />
+                <circle class="focus-ring" r="7" />
+                <circle class="focus-dot" r="3" />
+              </g>
+              <rect class="chart-hitbox" x="0" y="0" width="720" height="350" />
+            </svg>
+            <div class="chart-tooltip" role="status" aria-live="polite">
+              <span class="tooltip-date">WRZ 26</span>
+              <strong class="tooltip-value">121 840 PLN</strong>
+            </div>
+          </div>
+          <div class="chart-footer">
+            <span><i class="legend-line lime"></i> QF ALPHA</span>
+            <span><i class="legend-line gray"></i> BENCHMARK</span>
+            <span class="chart-model">MODEL: MOMENTUM_v3.2</span>
+          </div>
+        </div>
+
+        <div class="hero-index reveal" aria-hidden="true">
+          <span>01</span>
+          <i></i>
+          <span>05</span>
+        </div>
+      </section>
+
+      <section class="ticker" aria-label="Obszary działania klubu">
+        <div class="ticker-track">
+          <span>ALGORITHMIC TRADING</span><b>✦</b><span>RISK MODELING</span><b>✦</b>
+          <span>MACHINE LEARNING</span><b>✦</b><span>PORTFOLIO THEORY</span><b>✦</b>
+          <span>MARKET MICROSTRUCTURE</span><b>✦</b><span>ALGORITHMIC TRADING</span><b>✦</b>
+          <span>RISK MODELING</span><b>✦</b><span>MACHINE LEARNING</span><b>✦</b>
+          <span>PORTFOLIO THEORY</span><b>✦</b><span>MARKET MICROSTRUCTURE</span><b>✦</b>
+        </div>
+      </section>
+
+      <section id="o-nas" class="manifesto section-shell">
+        <div class="section-label reveal"><span>01</span> / O NAS</div>
+        <div class="manifesto-layout">
+          <div class="manifesto-statement reveal">
+            <p>Nie szukamy <s>magicznych formuł</s>.</p>
+            <h2>Szukamy lepszych<br />pytań.</h2>
+          </div>
+          <div class="manifesto-copy reveal">
+            <p>
+              Quant finance zaczyna się tam, gdzie intuicja spotyka dane.
+              Jesteśmy interdyscyplinarnym klubem dla osób, które chcą rozumieć
+              mechanizmy rynków — nie tylko je obserwować.
+            </p>
+            <div class="stats-row">
+              <div><strong>24</strong><span>aktywnych członków</span></div>
+              <div><strong>8</strong><span>projektów badawczych</span></div>
+              <div><strong>∞</strong><span>hipotez do obalenia</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lab" class="lab-section section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-label"><span>02</span> / QUANT LAB</div>
+            <h2>Strategia to hipoteza.<br /><em>Dane wydają wyrok.</em></h2>
+          </div>
+          <p>Przełącz model i zobacz, jak różne strategie zachowują się w tym samym reżimie rynkowym.</p>
+        </div>
+
+        <div class="lab-console reveal">
+          <div class="strategy-tabs" role="tablist" aria-label="Wybierz strategię">
+            <button class="strategy-tab is-active" role="tab" aria-selected="true" data-strategy="momentum">01 / MOMENTUM</button>
+            <button class="strategy-tab" role="tab" aria-selected="false" data-strategy="reversion">02 / MEAN REVERSION</button>
+            <button class="strategy-tab" role="tab" aria-selected="false" data-strategy="pairs">03 / PAIRS TRADING</button>
+          </div>
+          <div class="lab-body">
+            <div class="lab-copy">
+              <p class="code-label">// ACTIVE MODEL</p>
+              <h3 id="strategyName">Cross-sectional momentum</h3>
+              <p id="strategyDesc">Kupujemy aktywa z najwyższą stopą zwrotu z ostatnich 12 miesięcy i równoważymy ryzyko zmiennością.</p>
+              <div class="parameter-list">
+                <div><span>LOOKBACK</span><strong id="paramLookback">252D</strong></div>
+                <div><span>REBALANCE</span><strong id="paramRebalance">21D</strong></div>
+                <div><span>UNIVERSE</span><strong id="paramUniverse">WIG80</strong></div>
+              </div>
+              <button class="run-button" id="runBacktest" type="button"><span>▶</span> URUCHOM BACKTEST</button>
+            </div>
+            <div class="lab-chart-panel">
+              <div class="lab-chart-head">
+                <span>CUMULATIVE RETURN / 2021—2026</span>
+                <span id="backtestStatus">READY</span>
+              </div>
+              <svg id="labChart" viewBox="0 0 800 380" role="img" aria-labelledby="labChartTitle">
+                <title id="labChartTitle">Porównanie strategii z benchmarkiem</title>
+                <g class="lab-grid"></g>
+                <path class="benchmark-path" />
+                <path class="strategy-path" />
+                <g class="lab-end-labels"></g>
+              </svg>
+              <div class="lab-metrics" aria-live="polite">
+                <div><span>CAGR</span><strong id="metricCagr">18.4%</strong></div>
+                <div><span>SHARPE</span><strong id="metricSharpe">1.42</strong></div>
+                <div><span>MAX DD</span><strong id="metricDrawdown">−14.8%</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="program" class="program section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-label"><span>03</span> / JAK DZIAŁAMY</div>
+            <h2>Od teorii<br />do <em>produkcji.</em></h2>
+          </div>
+          <p>Pracujemy w małych zespołach. Każdy semestr kończymy działającym projektem, raportem albo otwartym badaniem.</p>
+        </div>
+
+        <div class="process-list">
+          <article class="process-item reveal">
+            <span class="process-number">01</span>
+            <div class="process-icon">∑</div>
+            <div><h3>Fundamenty</h3><p>Python, statystyka, szeregi czasowe i mechanika rynków.</p></div>
+            <span class="process-tag">WARSZTATY</span>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-number">02</span>
+            <div class="process-icon">⌁</div>
+            <div><h3>Research</h3><p>Formułujemy hipotezę, pozyskujemy dane i projektujemy eksperyment.</p></div>
+            <span class="process-tag">ZESPOŁY 3—5</span>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-number">03</span>
+            <div class="process-icon">⌘</div>
+            <div><h3>Build &amp; test</h3><p>Backtest, kontrola ryzyka, code review i iteracja modelu.</p></div>
+            <span class="process-tag">GITHUB</span>
+          </article>
+          <article class="process-item reveal">
+            <span class="process-number">04</span>
+            <div class="process-icon">↗</div>
+            <div><h3>Publikacja</h3><p>Demo day, raport badawczy i prezentacja dla partnerów.</p></div>
+            <span class="process-tag">OPEN SOURCE</span>
+          </article>
+        </div>
+      </section>
+
+      <section id="projekty" class="projects section-shell">
+        <div class="section-heading reveal">
+          <div>
+            <div class="section-label"><span>04</span> / PROJEKTY</div>
+            <h2>Rzeczy, które<br /><em>liczymy.</em></h2>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card project-featured reveal">
+            <div class="project-top"><span>RESEARCH / 2026</span><span class="project-status">● ACTIVE</span></div>
+            <div class="correlation-viz" aria-hidden="true">
+              <div class="matrix" id="matrix"></div>
+              <span class="matrix-axis axis-x">SEKTORY →</span>
+              <span class="matrix-axis axis-y">AKTYWA →</span>
+            </div>
+            <div class="project-content">
+              <h3>Mapa reżimów rynkowych</h3>
+              <p>Klasteryzacja polskiego rynku na podstawie korelacji, zmienności i płynności.</p>
+              <div class="tech-stack"><span>PYTHON</span><span>HDBSCAN</span><span>WIG</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top"><span>ENGINEERING / 2026</span><span>↗</span></div>
+            <div class="orderbook-viz" aria-hidden="true">
+              <div class="order-side asks"><i style="--w:42%"></i><i style="--w:67%"></i><i style="--w:86%"></i><i style="--w:55%"></i></div>
+              <div class="mid-price">247.82</div>
+              <div class="order-side bids"><i style="--w:58%"></i><i style="--w:92%"></i><i style="--w:73%"></i><i style="--w:38%"></i></div>
+            </div>
+            <div class="project-content">
+              <h3>Limit order book simulator</h3>
+              <p>Symulator mikrostruktury rynku i wpływu zleceń na cenę.</p>
+              <div class="tech-stack"><span>RUST</span><span>WEBSOCKETS</span></div>
+            </div>
+          </article>
+
+          <article class="project-card reveal">
+            <div class="project-top"><span>DATA / 2025</span><span>↗</span></div>
+            <div class="factor-viz" aria-hidden="true">
+              <div><span>MOM</span><i style="--h:72%"></i></div>
+              <div><span>VAL</span><i style="--h:45%"></i></div>
+              <div><span>VOL</span><i style="--h:88%"></i></div>
+              <div><span>QLT</span><i style="--h:60%"></i></div>
+              <div><span>SIZE</span><i style="--h:34%"></i></div>
+            </div>
+            <div class="project-content">
+              <h3>Factor zoo: GPW edition</h3>
+              <p>Replikacja i walidacja premii czynnikowych na polskich akcjach.</p>
+              <div class="tech-stack"><span>JULIA</span><span>POLARS</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="dolacz" class="join section-shell">
+        <div class="join-noise" aria-hidden="true"></div>
+        <div class="join-content reveal">
+          <div class="section-label"><span>05</span> / REKRUTACJA</div>
+          <h2>Masz pytania,<br />których rynek<br /><em>jeszcze nie zadał?</em></h2>
+          <p>Nie musisz być ekspertem. Wystarczy ciekawość, konsekwencja i gotowość do uczenia się razem z nami.</p>
+          <a class="button button-dark" href="mailto:quant@twojauczelnia.pl">APLIKUJ DO SKN <span>↗</span></a>
+        </div>
+        <div class="join-equation" aria-hidden="true">
+          <span>α = r<sub>p</sub> − [r<sub>f</sub> + β(r<sub>m</sub> − r<sub>f</sub>)]</span>
+          <span>σ² = wᵀΣw</span>
+          <span>E[R] = ∑ pᵢrᵢ</span>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-brand">
+        <span class="brand-mark" aria-hidden="true">Q<span>∴</span></span>
+        <div><strong>SKN QUANT FINANCE</strong><span>STUDENCKIE KOŁO NAUKOWE</span></div>
+      </div>
+      <div class="footer-links"><a href="#">LinkedIn</a><a href="#">GitHub</a><a href="mailto:quant@twojauczelnia.pl">E-mail</a></div>
+      <p>© 2026 SKN QF — BUILT ON DATA, POWERED BY CURIOSITY.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
