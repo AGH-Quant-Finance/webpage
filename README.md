@@ -1,22 +1,32 @@
-# SKN Quant Finance — strona klubu
+# AGH Quant Finance
 
-Nowoczesny, responsywny landing page studenckiego koła Quant Finance.
+Dwujęzyczna strona rekrutacyjna koła AGH Quant Finance, zbudowana w React, TypeScript i Vite.
 
 ## Uruchomienie
 
-Strona nie wymaga instalowania zależności. Otwórz `index.html` albo uruchom prosty serwer lokalny:
-
 ```bash
-python3 -m http.server 4173
+npm install
+npm run dev
 ```
 
-Następnie wejdź na `http://localhost:4173`.
+Vite wyświetli lokalny adres aplikacji, domyślnie `http://localhost:5173`.
 
-## Personalizacja
+## Kontrola jakości
 
-Przed publikacją zmień:
+```bash
+npm run lint
+npm run build
+```
 
-- adres e-mail `quant@twojauczelnia.pl`,
-- linki LinkedIn i GitHub w stopce,
-- liczby i opisy projektów,
-- nazwę uczelni lub pełną nazwę koła w logo i metadanych.
+## Struktura
+
+- `src/components/` — komponenty poszczególnych sekcji,
+- `src/content.ts` — komplet tekstów PL/EN i dane ścieżek,
+- `src/styles.css` — tokeny, layout, responsywność i motion.
+
+## Przed uruchomieniem rekrutacji
+
+- podłączyć właściwy formularz,
+- dodać oficjalne logo i dane kontaktowe,
+- zatwierdzić listę projektów pierwszego cyklu,
+- potwierdzić formalną nazwę koła oraz zasady użycia identyfikacji AGH.
