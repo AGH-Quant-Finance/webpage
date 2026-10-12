@@ -33,7 +33,7 @@ npm run build
 
 ## Identyfikacja wizualna — Phase 1
 
-Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czytelna typografia systemowa i szkło ograniczone do nawigacji. Navbar i hero są dwujęzyczne; struktura i treść pozostałych sekcji zostały zachowane.
+Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czytelna typografia systemowa i szkło ograniczone do nawigacji. Navbar i hero są dwujęzyczne; nowi użytkownicy zaczynają od wersji EN, a zapisany wybór PL/EN jest zachowany; struktura i treść pozostałych sekcji zostały zachowane.
 
 [Decyzje projektowe i wyniki weryfikacji](docs/phase-1-review.md).
 

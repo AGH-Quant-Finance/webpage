@@ -52,7 +52,7 @@ export function Header({ copy, language, languageLabel, onToggleLanguage }: Head
     <header className="site-header">
       <div className="site-header__material">
         <a className="brand pressable" href="#top" aria-label="Quant Finance AGH" onClick={closeMenu}>
-          <img className="brand__symbol" src="/brand/qfc-symbol.png" width="44" height="37" alt="" fetchPriority="high" />
+          <img className="brand__symbol" src="/brand/qfc-symbol.png" width="48" height="41" alt="" fetchPriority="high" />
           <strong>Quant Finance <span>AGH</span></strong>
         </a>
         <nav className="desktop-navigation" aria-label={copy.navigationLabel}>

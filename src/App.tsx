@@ -15,9 +15,9 @@ const PREFERENCES_KEY = "agh-qf:preferences:v1";
 function readInitialLanguage(): Language {
   try {
     const preferences = JSON.parse(localStorage.getItem(PREFERENCES_KEY) ?? "null") as { language?: unknown } | null;
-    return preferences?.language === "en" ? "en" : "pl";
+    return preferences?.language === "pl" ? "pl" : "en";
   } catch {
-    return "pl";
+    return "en";
   }
 }
 
@@ -28,7 +28,11 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.lang = language;
-    localStorage.setItem(PREFERENCES_KEY, JSON.stringify({ language }));
+    try {
+      localStorage.setItem(PREFERENCES_KEY, JSON.stringify({ language }));
+    } catch {
+      // Keep language switching usable when browser storage is unavailable.
+    }
   }, [language]);
 
   return (
