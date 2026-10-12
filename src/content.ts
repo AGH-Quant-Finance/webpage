@@ -3,7 +3,6 @@ export type Language = "pl" | "en";
 export type Skill = {
   name: string;
   level: string;
-  strength: number;
 };
 
 export type Path = {
@@ -52,7 +51,9 @@ export type SiteCopy = {
     primaryAction: string;
     secondaryAction: string;
     consoleLabel: string;
-    interactive: string;
+    skillsLabel: string;
+    signature: string;
+    skipLink: string;
     targetPath: string;
     semesterOutput: string;
   };
@@ -126,14 +127,16 @@ export const siteCopy: Record<Language, SiteCopy> = {
       closeMenu: "Zamknij menu",
     },
     hero: {
-      eyebrow: "Research · Machine Learning · Development",
-      title: "Poważny research.",
-      accent: "Lepszy start w quant finance.",
-      lead: "AGH Quant Finance to selektywna społeczność studentów, którzy chcą przekuć statystykę, machine learning, programowanie i ciekawość rynków w ambitne projekty, mocne portfolio oraz relacje z ludźmi o podobnych celach.",
-      primaryAction: "Poznaj ścieżki",
-      secondaryAction: "Jak wygląda rekrutacja",
-      consoleLabel: "career_path.config",
-      interactive: "interaktywny wybór",
+      eyebrow: "Koło naukowe · AGH w Krakowie",
+      title: "Rozwijamy finanse ilościowe",
+      accent: "przez badania i inżynierię.",
+      lead: "Studenckie koło naukowe przy AGH w Krakowie. Łączymy rzetelne badania ilościowe, odtwarzalne eksperymenty i budowę wydajnych systemów finansowych.",
+      primaryAction: "Poznaj projekty",
+      secondaryAction: "Jak dołączyć",
+      consoleLabel: "Dwie ścieżki. Wspólny kierunek.",
+      skillsLabel: "Obszary pracy",
+      signature: "Ludzie. Modele. Rynki.",
+      skipLink: "Przejdź do treści",
       targetPath: "Wybrana ścieżka",
       semesterOutput: "Efekt semestru",
     },
@@ -151,11 +154,11 @@ export const siteCopy: Record<Language, SiteCopy> = {
         description: "Formułuj hipotezy, buduj modele statystyczne i ML oraz testuj je z kontrolą bias, leakage i kosztów transakcyjnych.",
         output: "notebook → model → walidacja → raport",
         skills: [
-          { name: "Machine learning", level: "core", strength: 90 },
-          { name: "Statystyka", level: "core", strength: 88 },
-          { name: "Python", level: "working", strength: 86 },
-          { name: "Szeregi czasowe", level: "applied", strength: 82 },
-          { name: "Prawdopodobieństwo", level: "core", strength: 80 },
+          { name: "Machine learning", level: "core" },
+          { name: "Statystyka", level: "core" },
+          { name: "Python", level: "working" },
+          { name: "Szeregi czasowe", level: "applied" },
+          { name: "Prawdopodobieństwo", level: "core" },
         ],
       },
       {
@@ -166,11 +169,11 @@ export const siteCopy: Record<Language, SiteCopy> = {
         description: "Zamieniaj pomysły w powtarzalne narzędzia: pipeline danych, backtester, symulator egzekucji i testowalny kod.",
         output: "specyfikacja → system → benchmark",
         skills: [
-          { name: "Python", level: "core", strength: 90 },
-          { name: "C++", level: "basics", strength: 68 },
-          { name: "System design", level: "mindset", strength: 80 },
-          { name: "Git / testy", level: "working", strength: 74 },
-          { name: "Data pipelines", level: "working", strength: 78 },
+          { name: "Python", level: "core" },
+          { name: "C++", level: "basics" },
+          { name: "System design", level: "mindset" },
+          { name: "Git / testy", level: "working" },
+          { name: "Data pipelines", level: "working" },
         ],
       },
     ],
@@ -275,14 +278,16 @@ export const siteCopy: Record<Language, SiteCopy> = {
       closeMenu: "Close menu",
     },
     hero: {
-      eyebrow: "Research · Machine Learning · Development",
-      title: "Serious research.",
-      accent: "A stronger start in quant finance.",
-      lead: "AGH Quant Finance is a selective community for students who want to turn statistics, machine learning, programming and curiosity about markets into ambitious projects, a strong portfolio and relationships with like-minded people.",
-      primaryAction: "Explore paths",
-      secondaryAction: "How recruitment works",
-      consoleLabel: "career_path.config",
-      interactive: "interactive selection",
+      eyebrow: "Scientific society · AGH University of Krakow",
+      title: "Advancing quantitative finance",
+      accent: "through research and engineering.",
+      lead: "A student-led scientific society at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
+      primaryAction: "Explore Projects",
+      secondaryAction: "How to Join",
+      consoleLabel: "Two paths. A shared direction.",
+      skillsLabel: "Areas of work",
+      signature: "People. Models. Markets.",
+      skipLink: "Skip to content",
       targetPath: "Selected path",
       semesterOutput: "Semester output",
     },
@@ -300,11 +305,11 @@ export const siteCopy: Record<Language, SiteCopy> = {
         description: "Form hypotheses, build statistical and ML models, and test them while controlling for bias, leakage and transaction costs.",
         output: "notebook → model → validation → report",
         skills: [
-          { name: "Machine learning", level: "core", strength: 90 },
-          { name: "Statistics", level: "core", strength: 88 },
-          { name: "Python", level: "working", strength: 86 },
-          { name: "Time series", level: "applied", strength: 82 },
-          { name: "Probability", level: "core", strength: 80 },
+          { name: "Machine learning", level: "core" },
+          { name: "Statistics", level: "core" },
+          { name: "Python", level: "working" },
+          { name: "Time series", level: "applied" },
+          { name: "Probability", level: "core" },
         ],
       },
       {
@@ -315,11 +320,11 @@ export const siteCopy: Record<Language, SiteCopy> = {
         description: "Turn ideas into repeatable tools: data pipelines, backtesters, execution simulators and testable code.",
         output: "specification → system → benchmark",
         skills: [
-          { name: "Python", level: "core", strength: 90 },
-          { name: "C++", level: "basics", strength: 68 },
-          { name: "System design", level: "mindset", strength: 80 },
-          { name: "Git / testing", level: "working", strength: 74 },
-          { name: "Data pipelines", level: "working", strength: 78 },
+          { name: "Python", level: "core" },
+          { name: "C++", level: "basics" },
+          { name: "System design", level: "mindset" },
+          { name: "Git / testing", level: "working" },
+          { name: "Data pipelines", level: "working" },
         ],
       },
     ],

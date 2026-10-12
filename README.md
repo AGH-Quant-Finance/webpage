@@ -5,7 +5,7 @@ Dwujęzyczna strona rekrutacyjna koła AGH Quant Finance, zbudowana w React, Typ
 ## Uruchomienie
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
@@ -27,6 +27,14 @@ npm run build
 ## Przed uruchomieniem rekrutacji
 
 - podłączyć właściwy formularz,
-- dodać oficjalne logo i dane kontaktowe,
+- dodać oficjalne dane kontaktowe,
 - zatwierdzić listę projektów pierwszego cyklu,
 - potwierdzić formalną nazwę koła oraz zasady użycia identyfikacji AGH.
+
+## Identyfikacja wizualna — Phase 1
+
+Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czytelna typografia systemowa i szkło ograniczone do nawigacji. Navbar i hero są dwujęzyczne; nowi użytkownicy zaczynają od wersji EN, a zapisany wybór PL/EN jest zachowany; struktura i treść pozostałych sekcji zostały zachowane.
+
+[Decyzje projektowe i wyniki weryfikacji](docs/phase-1-review.md).
+
+Podglądy: [PL desktop](docs/screenshots/pl-desktop.png), [PL mobile](docs/screenshots/pl-mobile.png), [EN desktop](docs/screenshots/en-desktop.png), [EN mobile](docs/screenshots/en-mobile.png).
