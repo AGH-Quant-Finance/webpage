@@ -3,8 +3,7 @@ import { Community } from "./components/Community";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
-import { Principle } from "./components/Principle";
-import { Projects } from "./components/Projects";
+import { ResearchDevelopment } from "./components/ResearchDevelopment";
 import { Recruitment } from "./components/Recruitment";
 import { ResearchCycle } from "./components/ResearchCycle";
 import { siteCopy, type Language } from "./content";
@@ -46,8 +45,7 @@ export default function App() {
       />
       <main id="main-content" tabIndex={-1}>
         <Hero copy={copy} />
-        <Principle copy={copy.principle} />
-        <Projects copy={copy.projects} />
+        <ResearchDevelopment copy={copy.disciplines} />
         <ResearchCycle copy={copy.cycle} />
         <Community copy={copy.community} />
         <Recruitment copy={copy.recruitment} />

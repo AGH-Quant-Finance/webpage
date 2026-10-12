@@ -54,11 +54,11 @@ export function Recruitment({ copy }: RecruitmentProps) {
   };
 
   return (
-    <section className="recruitment" id="recruitment">
+    <section className="recruitment" id="recruitment" tabIndex={-1} aria-labelledby="recruitment-title">
       <div className="recruitment__inner shell">
         <div className="recruitment__copy" data-reveal>
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.title}</h2>
+          <h2 id="recruitment-title">{copy.title}</h2>
           <p>{copy.description}</p>
           <button
             className="primary-button pressable"

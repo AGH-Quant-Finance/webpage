@@ -6,35 +6,17 @@ type CommunityProps = {
 
 export function Community({ copy }: CommunityProps) {
   return (
-    <section className="community" id="community">
+    <section className="community" id="community" tabIndex={-1} aria-labelledby="community-title">
       <div className="community__inner shell">
         <div className="community__statement" data-reveal>
           <p className="eyebrow">{copy.eyebrow}</p>
-          <h2>{copy.title}</h2>
-          <p>{copy.description}</p>
+          <h2 id="community-title">{copy.title}</h2>
         </div>
-
-        <aside className="industry-card" data-reveal>
-          <div className="industry-card__header">
-            <span>{copy.networkLabel}</span>
-            <i aria-hidden="true" />
-          </div>
-          <h3>{copy.networkTitle}</h3>
-          <p>{copy.networkDescription}</p>
-          <ul>
-            {copy.sectors.map((sector, index) => (
-              <li key={sector}>
-                <span>0{index + 1}</span>
-                <strong>{sector}</strong>
-              </li>
-            ))}
-          </ul>
-        </aside>
+        <p className="community__description" data-reveal>{copy.description}</p>
 
         <div className="community-pillars">
-          {copy.pillars.map((pillar, index) => (
+          {copy.pillars.map((pillar) => (
             <article key={pillar.title} data-reveal>
-              <span>0{index + 1}</span>
               <h3>{pillar.title}</h3>
               <p>{pillar.description}</p>
             </article>

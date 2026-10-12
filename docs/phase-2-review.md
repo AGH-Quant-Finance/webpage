@@ -1,51 +1,64 @@
-# Phase 2 — Research and Development projects
+# Phase 2 — Final institutional homepage
 
-Baseline: approved Phase 1.1 commit `c3babb7`. Branch: `codex/research-development-projects-phase-2`. The draft PR targets `design/brand-redesign-phase-1`, keeping this work separate from PR #1.
+Branch: `codex/research-development-projects-phase-2`. Draft PR #2 targets the approved Phase 1.1 branch `design/brand-redesign-phase-1` (`c3babb7`).
 
-## Design review
+## Composition
 
-Two clearly labelled groups each contain two proposal cards: Quant Research and Quant Development. Desktop uses two columns with equal-height cards within each group; mobile uses one reading column. White surfaces, blue/slate text, restrained borders, and the approved type scale maintain the institutional identity.
+The homepage presents five sections: the approved academic hero and interactive track panel, a brief Research & Development introduction, Our Approach, Community, and Get Involved. The project catalogue has been removed from the homepage. The two disciplines are explained through their relationship rather than another list of skills or proposals.
 
-All questions or objectives, core methods or implementation scope, expected deliverables, and proposal statuses remain visible. Development cards also show evaluation criteria. Static definition lists and short method lists provide readable structure without another interaction layer. Project titles are keyboard-accessible permalinks, with stable anchors and clearance below the floating navbar.
+Lower sections share aligned heading and text columns, a restrained type scale, and subtle separators. The Define → Build → Challenge → Share component uses open columns instead of enclosed cards; tablet and mobile reflow preserve the sequence. Section spacing and footer proportions have been tightened. The official logo, light cobalt/blue/slate palette, glass navigation, hero composition, and minimal motion remain intact.
 
-The Development introduction explains the potential exchange-infrastructure relationship while each component retains its own title, scope, evaluation, and deliverable. Research staffing and durations appear only under **Proposed scope**, with approximate durations. All four statuses remain **Proposed** (Polish: **Propozycja**).
+Header and footer links are Paths / Approach / Community / Recruitment, with Polish equivalents. The hero's primary CTA is Our Approach (`#approach`); How to Join still leads to the recruitment preparation section. All section links resolve to focusable targets below the floating navigation. No active UI links to the removed project section.
 
-No illustrative charts, fabricated results, repositories, team members, publications, partners, or deadlines were added. Project recruitment is not linked to the general membership preview. The navbar, hero, logo, language preference behavior, and remaining section content are preserved.
+Community focuses on collaborative research and engineering, peer review, discussion, and the ambition to engage practitioners. It makes no claim of established partnerships. Get Involved explains participation and keeps the existing application preparation preview, including its inactive-form notice.
 
-## Content model and accuracy
+English remains the default for new visitors. Explicit saved PL/EN preferences remain functional, including when browser storage is unavailable. No dependencies or routes were added.
 
-`src/content.ts` uses typed project groups and distinct Research/Development records. Research records hold questions, methods, optional benchmarks, and proposed researcher/week metadata. Development records hold objectives, implementation scope, and evaluation criteria; their type has no researcher or schedule field. Status and expected deliverables are explicit in each record.
+## Preserved proposals
 
-| Proposal | Details retained from the brief |
+`src/projectProposals.ts` exports a typed bilingual dataset for future publication on a dedicated Projects/Research page. It is not imported by the homepage. The unused Projects component and its styles have been removed; no replacement catalogue or `/projects` route was introduced.
+
+Every proposal field was compared directly with the previous Phase 2 dataset at `dfbf427`, and both language objects are identical. This includes section/group introductions and labels, IDs, titles, proposal status, scientific and technical content, expected deliverables, and research scope metadata.
+
+| Proposal | Retained content |
 | --- | --- |
 | Volatility Forecasting | Five-minute BTC/ETH, realized variance, HAR/XGBoost with the same information, chronological walk-forward, QLIKE, stress-period analysis; optional EWMA/GARCH; reproducible study and ranking stability; proposed 4 researchers, approximately 12–14 weeks |
-| Imperfect Volatility Hedging | European calls, simulated hedging, stochastic volatility such as Heston in the main experiment, delta hedging, no-trade bands, cost-aware benchmarks, small deep-hedging model; information delays, costs, market conditions and tail risk; proposed 5 researchers, approximately 20–24 weeks |
+| Imperfect Volatility Hedging | European calls, simulated hedging, stochastic volatility such as Heston, delta hedging, no-trade bands, cost-aware benchmarks, small deep-hedging model; information delays, costs, market conditions and tail risk; proposed 5 researchers, approximately 20–24 weeks |
 | Order Book Engine | C++ limit order book; bid/ask, price levels, price-time priority, insert/modify/cancel/lookup, efficient structures; correctness, throughput, operation latency, memory and intensive flow; tested, benchmarked, documented component as the expected outcome |
-| Matching Engine | C++ electronic execution; buy/sell matching, partial/full fills, cancellation, trade events, determinism; correctness, coverage, throughput, latency distributions and high load; tested component integrating with the Order Book Engine as the expected outcome |
+| Matching Engine | C++ execution; buy/sell matching, partial/full fills, cancellation, trade events, determinism; correctness, coverage, throughput, latency distributions and high load; tested component integrating with the Order Book Engine as the expected outcome |
 
-Both language versions share IDs, order, proposal status, research scopes, and the same scientific/technical content. All non-project PL/EN content was compared directly with the approved Phase 1.1 model and remains identical. No dependencies were added.
+Research and Development retain distinct types. Development records have no invented staffing or schedule fields. All four remain proposals, with no claims of completed or published work.
 
 ## Verification
 
-- `npm run lint`: passed.
-- `npm run build`: passed, including the TypeScript build.
-- `git diff --check`: passed.
-- Chromium at 375, 768, 1440 and 1920px in both languages: four cards, two correct groups, matching titles/statuses, core methods, deliverables, research scopes and absence of Development staffing/schedules checked.
-- Two columns on desktop and one column at tablet/mobile widths; equal card heights within desktop pairs; no horizontal document or visible-element overflow.
-- All four project permalinks tested with keyboard focus and Enter. Fragment navigation focuses the corresponding article and leaves it below the floating navbar. Desktop and mobile navigation to `#projects` also focus the section with navbar clearance.
-- No JavaScript runtime errors. Full-page screenshots were taken after scrolling through all sections and confirming no reveal content remained hidden.
-- Structured-data checks verify matching PL/EN IDs, groups, status and scope numbers, optional EWMA/GARCH, and Heston in the main experiment.
-- Non-project content compared against Phase 1.1 and unchanged; no dependencies, routing framework, backend, or CMS added.
+- `npm ci`, `npm run lint`, `npm run build`, and `git diff --check`: passed. The lockfile and dependencies are unchanged. Installation reports two existing high-severity advisories in the development dependency tree; `npm audit --omit=dev` reports zero vulnerabilities.
+- Production build served locally and checked in Chromium at 375, 768, 1440 and 1920px, in both languages.
+- Language switching and persistence, fresh-visitor English, malformed preference fallback, and blocked-storage switching: passed.
+- All header/mobile/footer and hero anchors tested with keyboard Enter; correct fragment, target focus and clearance below the floating navbar verified. No dangling anchors or rendered project catalogue.
+- Mobile menu initial focus, Escape closure and focus restoration: passed.
+- Hero tabs: ArrowLeft/ArrowRight/Home/End, selected panel and roving tab focus: passed.
+- Recruitment preview: four preparation items, opening focus, Tab/Shift+Tab containment, Escape and close-button focus restoration: passed.
+- Skip link, reduced motion and solid reduced-transparency navigation: passed.
+- No horizontal document or visible-element overflow, broken images/favicon assets, failed requests, console errors or JavaScript runtime errors. Visible text is at least 12px.
+- Approved hero text (except the requested primary CTA), track data, and recruitment preparation content compared with the previous version and retained.
+- Full-page screenshots were captured after scrolling through all reveal sections and confirming every section was visible. Complete desktop and mobile compositions reviewed in both languages.
 
-Browser validation used Chromium; Firefox and Safari were not independently tested. No publication or merge is part of this phase.
+Firefox and Safari were not independently tested. This PR remains a draft; no merge or production deployment is part of the work.
 
-## Screenshots
+## Screenshots and comparison
 
-Full-page captures include the complete page with all reveal sections visible, at 1440 × 1000 and 375 × 1000 browser viewports. Full image height follows page content.
+Full-page captures use 1440 × 1000 and 375 × 1000 browser viewports. Image height follows the complete page content.
 
-| Language | Desktop full page | Mobile full page | Projects detail |
-| --- | --- | --- | --- |
-| English | [Desktop](screenshots/phase-2/en-desktop-full.png) | [Mobile](screenshots/phase-2/en-mobile-full.png) | [Projects](screenshots/phase-2/en-projects.png) |
-| Polish | [Desktop](screenshots/phase-2/pl-desktop-full.png) | [Mobile](screenshots/phase-2/pl-mobile-full.png) | [Projects](screenshots/phase-2/pl-projects.png) |
+| Language | Desktop full page | Mobile full page |
+| --- | --- | --- |
+| English | [Desktop](screenshots/final/en-desktop-full.png) | [Mobile](screenshots/final/en-mobile-full.png) |
+| Polish | [Desktop](screenshots/final/pl-desktop-full.png) | [Mobile](screenshots/final/pl-mobile-full.png) |
 
-![English projects section](screenshots/phase-2/en-projects.png)
+[Desktop after scrolling: navigation glass over page content](screenshots/final/en-desktop-scrolled.png).
+
+| Previous catalogue composition | Final institutional composition |
+| --- | --- |
+| [English desktop before](screenshots/phase-2/en-desktop-full.png) | [English desktop after](screenshots/final/en-desktop-full.png) |
+| [English mobile before](screenshots/phase-2/en-mobile-full.png) | [English mobile after](screenshots/final/en-mobile-full.png) |
+
+Earlier Phase 2 screenshots remain as historical comparisons. The `final/` captures show the current implementation.

@@ -1,6 +1,6 @@
 # AGH Quant Finance
 
-Dwujęzyczna strona rekrutacyjna koła AGH Quant Finance, zbudowana w React, TypeScript i Vite.
+Dwujęzyczna strona koła AGH Quant Finance, zbudowana w React, TypeScript i Vite. Przedstawia badania i inżynierię, sposób pracy, społeczność oraz możliwości dołączenia.
 
 ## Uruchomienie
 
@@ -22,6 +22,7 @@ npm run build
 
 - `src/components/` — komponenty poszczególnych sekcji,
 - `src/content.ts` — komplet tekstów PL/EN i dane ścieżek,
+- `src/projectProposals.ts` — cztery pełne propozycje PL/EN zachowane dla przyszłej strony projektów,
 - `src/styles.css` — tokeny, layout, responsywność i motion.
 
 ## Przed uruchomieniem rekrutacji
@@ -39,8 +40,10 @@ Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czyt
 
 Podglądy: [PL desktop](docs/screenshots/pl-desktop.png), [PL mobile](docs/screenshots/pl-mobile.png), [EN desktop](docs/screenshots/en-desktop.png), [EN mobile](docs/screenshots/en-mobile.png).
 
-## Projekty — Phase 2
+## Minimalistyczna strona główna — Phase 2
 
-Sekcja projektów przedstawia cztery propozycje w grupach Quant Research i Quant Development. Dane PL/EN w `src/content.ts` rozdzielają pytania i metodologię badań od celów, zakresu implementacji i oceny komponentów C++.
+Strona główna ma pięć sekcji: hero z panelem ścieżek, Research & Development, podejście Define → Build → Challenge → Share, społeczność i informacje o dołączeniu. Nawigacja oraz główne CTA prowadzą do aktualnych sekcji. Nowi użytkownicy zaczynają od EN; zapisany wybór PL/EN jest zachowany.
+
+Katalog projektów nie jest renderowany na stronie głównej. `src/projectProposals.ts` zachowuje bez zmian pełne opisy Volatility Forecasting, Hedging with Imperfect Volatility Information, Order Book Engine i Matching Engine w obu językach: metodologię, cele techniczne, zakres, kryteria oceny, oczekiwane rezultaty i proponowane metadane. Dane nie są importowane przez stronę główną; osobna strona projektów nie została jeszcze wdrożona.
 
 [Przegląd projektu, weryfikacja i pełne zrzuty strony](docs/phase-2-review.md).

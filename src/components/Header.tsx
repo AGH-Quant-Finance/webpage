@@ -10,7 +10,7 @@ type HeaderProps = {
 
 const navigationItems = [
   { href: "#paths", key: "paths" },
-  { href: "#projects", key: "projects" },
+  { href: "#approach", key: "approach" },
   { href: "#community", key: "community" },
   { href: "#recruitment", key: "recruitment" },
 ] as const;

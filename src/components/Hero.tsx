@@ -11,7 +11,7 @@ export function Hero({ copy }: HeroProps) {
         <h1 id="hero-title"><span>{copy.hero.title}</span> <em>{copy.hero.accent}</em></h1>
         <p className="hero-lead">{copy.hero.lead}</p>
         <div className="hero-actions">
-          <a className="primary-button pressable" href="#projects">{copy.hero.primaryAction}<span aria-hidden="true">↗</span></a>
+          <a className="primary-button pressable" href="#approach">{copy.hero.primaryAction}<span aria-hidden="true">↗</span></a>
           <a className="secondary-link pressable" href="#recruitment">{copy.hero.secondaryAction}<span aria-hidden="true">→</span></a>
         </div>
       </div>

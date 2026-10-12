@@ -12,7 +12,7 @@ export function Footer({ copy, navigation }: FooterProps) {
       <div className="footer__links">
         <span>{copy.navigation}</span>
         <a href="#paths">{navigation.paths}</a>
-        <a href="#projects">{navigation.projects}</a>
+        <a href="#approach">{navigation.approach}</a>
         <a href="#community">{navigation.community}</a>
         <a href="#recruitment">{navigation.recruitment}</a>
       </div>
