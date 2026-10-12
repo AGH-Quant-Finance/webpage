@@ -80,12 +80,6 @@ export type SiteCopy = {
     sheetTitle: string;
     sheetDescription: string;
     items: Array<{ index: string; title: string; description: string }>;
-    requirementsTitle: string;
-    researchTitle: string;
-    researchRequirements: string;
-    developmentTitle: string;
-    developmentRequirements: string;
-    footerNote: string;
   };
   footer: {
     description: string;
@@ -188,7 +182,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Rozwijaj swój warsztat we wspólnej pracy.",
       description: "Wybierz Research lub Development, aby uczestniczyć w pracy zespołowej i dyskusjach technicznych. Doświadczenie w finansach nie jest wymagane. Zanim uruchomimy nabór, możesz zapoznać się z informacjami potrzebnymi do zgłoszenia.",
       formLabel: "Formularz zostanie opublikowany po formalnym uruchomieniu naboru.",
-      previewAction: "Zobacz, co przygotować",
+      previewAction: "Jak dołączyć",
       closePreview: "Zamknij",
       sheetEyebrow: "Przygotowanie zgłoszenia",
       sheetTitle: "Cztery rzeczy, które chcemy o Tobie wiedzieć.",
@@ -199,12 +193,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
         { index: "03", title: "Realizowane projekty", description: "Opisz problem, swój wkład, użyte narzędzia oraz najważniejszą lekcję." },
         { index: "04", title: "Motywacja", description: "Wyjaśnij, dlaczego chcesz dołączyć właśnie do AGH Quant Finance." },
       ],
-      requirementsTitle: "Techniczne podstawy zależą od wybranej ścieżki",
-      researchTitle: "Research",
-      researchRequirements: "Python, statystyka, prawdopodobieństwo i podstawy machine learningu.",
-      developmentTitle: "Development",
-      developmentRequirements: "Python, Git, podstawy C++ i zainteresowanie budową niezawodnych systemów.",
-      footerNote: "Motywacja jest konieczna. Nie zastępuje jednak podstaw potrzebnych do rozpoczęcia pracy w wybranej ścieżce.",
     },
     footer: {
       description: "Studencka inicjatywa badawczo-projektowa na AGH w Krakowie.",
@@ -305,7 +293,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Develop your practice through shared work.",
       description: "Choose Research or Development to participate in team work and technical discussions. Finance experience is not required. Before applications open, you can review the information to prepare for joining.",
       formLabel: "The form will be published when recruitment formally opens.",
-      previewAction: "See what to prepare",
+      previewAction: "How to Join",
       closePreview: "Close",
       sheetEyebrow: "Application preparation",
       sheetTitle: "Four things we want to know about you.",
@@ -316,12 +304,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
         { index: "03", title: "Projects", description: "Describe the problem, your contribution, the tools used and the most important lesson." },
         { index: "04", title: "Motivation", description: "Explain why you want to join AGH Quant Finance specifically." },
       ],
-      requirementsTitle: "Technical fundamentals depend on the selected path",
-      researchTitle: "Research",
-      researchRequirements: "Python, statistics, probability and machine learning fundamentals.",
-      developmentTitle: "Development",
-      developmentRequirements: "Python, Git, C++ basics and an interest in building reliable systems.",
-      footerNote: "Motivation is essential. It does not replace the foundations needed to start working in your selected path.",
     },
     footer: {
       description: "A student research and project initiative at AGH University in Kraków.",

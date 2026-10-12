@@ -56,9 +56,11 @@ export function Recruitment({ copy }: RecruitmentProps) {
   return (
     <section className="recruitment" id="recruitment" tabIndex={-1} aria-labelledby="recruitment-title">
       <div className="recruitment__inner shell">
-        <div className="recruitment__copy" data-reveal>
+        <div className="recruitment__heading" data-reveal>
           <p className="eyebrow">{copy.eyebrow}</p>
           <h2 id="recruitment-title">{copy.title}</h2>
+        </div>
+        <div className="recruitment__copy" data-reveal>
           <p>{copy.description}</p>
           <button
             className="primary-button pressable"
@@ -71,13 +73,6 @@ export function Recruitment({ copy }: RecruitmentProps) {
             {copy.previewAction}<span aria-hidden="true">↗</span>
           </button>
           <span className="form-status"><i aria-hidden="true" />{copy.formLabel}</span>
-        </div>
-
-        <div className="requirements" data-reveal>
-          <h3>{copy.requirementsTitle}</h3>
-          <article><span>01</span><div><strong>{copy.researchTitle}</strong><p>{copy.researchRequirements}</p></div></article>
-          <article><span>02</span><div><strong>{copy.developmentTitle}</strong><p>{copy.developmentRequirements}</p></div></article>
-          <p className="requirements__note">{copy.footerNote}</p>
         </div>
       </div>
 

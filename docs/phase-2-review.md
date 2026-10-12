@@ -10,7 +10,9 @@ Lower sections share aligned heading and text columns, a restrained type scale, 
 
 Header and footer links are Paths / Approach / Community / Recruitment, with Polish equivalents. The hero's primary CTA is Our Approach (`#approach`); How to Join still leads to the recruitment preparation section. All section links resolve to focusable targets below the floating navigation. No active UI links to the removed project section.
 
-Community focuses on collaborative research and engineering, peer review, discussion, and the ambition to engage practitioners. It makes no claim of established partnerships. Get Involved explains participation and keeps the existing application preparation preview, including its inactive-form notice.
+Community focuses on collaborative research and engineering, peer review, discussion, and the ambition to engage practitioners. It makes no claim of established partnerships. Get Involved pairs a prominent heading with a short description, the bilingual How to Join button and application-status notice. The redundant path requirements, their copy fields and styles have been removed. The preparation dialog, its contents, focus containment/restoration, Escape handling and scroll lock are unchanged.
+
+The final polish adds a slightly clearer translucent top edge and softer layered depth to the floating navbar. Its approved transparency and 16px blur remain unchanged, as do the solid material fallbacks. No additional glass surfaces or animations were introduced; all other sections and their bilingual copy are preserved.
 
 English remains the default for new visitors. Explicit saved PL/EN preferences remain functional, including when browser storage is unavailable. No dependencies or routes were added.
 
@@ -54,7 +56,7 @@ Full-page captures use 1440 × 1000 and 375 × 1000 browser viewports. Image hei
 | English | [Desktop](screenshots/final/en-desktop-full.png) | [Mobile](screenshots/final/en-mobile-full.png) |
 | Polish | [Desktop](screenshots/final/pl-desktop-full.png) | [Mobile](screenshots/final/pl-mobile-full.png) |
 
-[Desktop after scrolling: navigation glass over page content](screenshots/final/en-desktop-scrolled.png).
+Desktop after scrolling, with navigation glass over page content: [English](screenshots/final/en-desktop-scrolled.png) · [Polish](screenshots/final/pl-desktop-scrolled.png).
 
 | Previous catalogue composition | Final institutional composition |
 | --- | --- |
