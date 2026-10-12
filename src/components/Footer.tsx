@@ -8,7 +8,7 @@ type FooterProps = {
 export function Footer({ copy, navigation }: FooterProps) {
   return (
     <footer className="footer shell">
-      <div className="footer__brand"><span aria-hidden="true">⌁</span><strong>AGH_QF</strong><p>{copy.description}</p></div>
+      <div className="footer__brand"><img src="/brand/qfc-symbol.png" width="38" height="32" alt="" loading="lazy" /><strong>Quant Finance AGH</strong><p>{copy.description}</p></div>
       <div className="footer__links">
         <span>{copy.navigation}</span>
         <a href="#paths">{navigation.paths}</a>

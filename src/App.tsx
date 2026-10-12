@@ -33,13 +33,14 @@ export default function App() {
 
   return (
     <div className="site-frame">
+      <a className="skip-link" href="#main-content">{copy.hero.skipLink}</a>
       <Header
         copy={copy.header}
         language={language}
         languageLabel={copy.languageLabel}
         onToggleLanguage={() => setLanguage((current) => current === "pl" ? "en" : "pl")}
       />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero copy={copy} />
         <Principle copy={copy.principle} />
         <Projects copy={copy.projects} />
