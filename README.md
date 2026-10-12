@@ -38,3 +38,9 @@ Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czyt
 [Decyzje projektowe i wyniki weryfikacji](docs/phase-1-review.md).
 
 Podglądy: [PL desktop](docs/screenshots/pl-desktop.png), [PL mobile](docs/screenshots/pl-mobile.png), [EN desktop](docs/screenshots/en-desktop.png), [EN mobile](docs/screenshots/en-mobile.png).
+
+## Projekty — Phase 2
+
+Sekcja projektów przedstawia cztery propozycje w grupach Quant Research i Quant Development. Dane PL/EN w `src/content.ts` rozdzielają pytania i metodologię badań od celów, zakresu implementacji i oceny komponentów C++.
+
+[Przegląd projektu, weryfikacja i pełne zrzuty strony](docs/phase-2-review.md).
