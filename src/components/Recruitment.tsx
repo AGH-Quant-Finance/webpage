@@ -61,7 +61,10 @@ export function Recruitment({ copy }: RecruitmentProps) {
           <h2 id="recruitment-title">{copy.title}</h2>
         </div>
         <div className="recruitment__copy" data-reveal>
-          <p>{copy.description}</p>
+          <div className="recruitment__description">
+            {copy.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+          </div>
+          <p className="recruitment__supporting-note">{copy.supportingNote}</p>
           <button
             className="primary-button pressable"
             type="button"
@@ -91,6 +94,7 @@ export function Recruitment({ copy }: RecruitmentProps) {
         role="dialog"
         aria-modal="true"
         aria-labelledby="application-sheet-title"
+        aria-describedby="application-sheet-description"
         aria-hidden={!sheetOpen}
         data-open={sheetOpen ? "" : undefined}
       >
@@ -101,11 +105,22 @@ export function Recruitment({ copy }: RecruitmentProps) {
             <span aria-hidden="true">×</span><span className="visually-hidden">{copy.closePreview}</span>
           </button>
         </div>
-        <p className="application-sheet__description">{copy.sheetDescription}</p>
-        <div className="application-items">
+        <p className="application-sheet__description" id="application-sheet-description">{copy.sheetDescription}</p>
+        <ul className="application-items">
           {copy.items.map((item) => (
-            <article key={item.index}><span>{item.index}</span><div><h3>{item.title}</h3><p>{item.description}</p></div></article>
+            <li key={item.title}><h3>{item.title}</h3><p>{item.description}</p></li>
           ))}
+        </ul>
+        <div className="membership-context">
+          <section aria-labelledby="membership-title">
+            <h3 id="membership-title">{copy.membershipTitle}</h3>
+            <p>{copy.membershipDescription}</p>
+            <p>{copy.membershipNotice}</p>
+          </section>
+          <section aria-labelledby="project-participation-title">
+            <h3 id="project-participation-title">{copy.projectTitle}</h3>
+            <p>{copy.projectDescription}</p>
+          </section>
         </div>
       </aside>
     </section>

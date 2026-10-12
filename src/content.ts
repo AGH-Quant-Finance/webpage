@@ -72,14 +72,20 @@ export type SiteCopy = {
   recruitment: {
     eyebrow: string;
     title: string;
-    description: string;
+    description: string[];
+    supportingNote: string;
     formLabel: string;
     previewAction: string;
     closePreview: string;
     sheetEyebrow: string;
     sheetTitle: string;
     sheetDescription: string;
-    items: Array<{ index: string; title: string; description: string }>;
+    items: Array<{ title: string; description: string }>;
+    membershipTitle: string;
+    membershipDescription: string;
+    membershipNotice: string;
+    projectTitle: string;
+    projectDescription: string;
   };
   footer: {
     description: string;
@@ -179,20 +185,31 @@ export const siteCopy: Record<Language, SiteCopy> = {
     },
     recruitment: {
       eyebrow: "Dołącz do nas",
-      title: "Rozwijaj swój warsztat we wspólnej pracy.",
-      description: "Wybierz Research lub Development, aby uczestniczyć w pracy zespołowej i dyskusjach technicznych. Doświadczenie w finansach nie jest wymagane. Zanim uruchomimy nabór, możesz zapoznać się z informacjami potrzebnymi do zgłoszenia.",
+      title: "Najważniejsza jest ciekawość.",
+      description: [
+        "Nie potrzebujesz rozbudowanego portfolio ani doświadczenia w finansach ilościowych, żeby do nas dołączyć.",
+        "Opowiedz nam krótko o sobie, swoich zainteresowaniach i o tym, co chcesz zgłębiać.",
+      ],
+      supportingNote: "Wymagania techniczne poszczególnych projektów badawczych i inżynieryjnych mogą się różnić.",
       formLabel: "Formularz zostanie opublikowany po formalnym uruchomieniu naboru.",
       previewAction: "Jak dołączyć",
       closePreview: "Zamknij",
-      sheetEyebrow: "Przygotowanie zgłoszenia",
-      sheetTitle: "Cztery rzeczy, które chcemy o Tobie wiedzieć.",
-      sheetDescription: "To nie jest jeszcze aktywny formularz. Ta lista pozwala wcześniej przygotować najważniejsze informacje.",
+      sheetEyebrow: "Jak dołączyć",
+      sheetTitle: "Na początek krótkie zgłoszenie.",
+      sheetDescription: "Po otwarciu naboru krótki formularz pozwoli nam poznać Ciebie i Twoje zainteresowania. Poniżej opisujemy planowane informacje — to jeszcze nie jest aktywny formularz.",
       items: [
-        { index: "01", title: "CV", description: "Krótko pokaż wykształcenie, umiejętności techniczne i dotychczasową aktywność." },
-        { index: "02", title: "Kilka zdań o sobie", description: "Napisz, czym się interesujesz i czy bliżej Ci do Research, czy Development." },
-        { index: "03", title: "Realizowane projekty", description: "Opisz problem, swój wkład, użyte narzędzia oraz najważniejszą lekcję." },
-        { index: "04", title: "Motywacja", description: "Wyjaśnij, dlaczego chcesz dołączyć właśnie do AGH Quant Finance." },
+        { title: "Dane kontaktowe", description: "Imię, nazwisko i adres e-mail." },
+        { title: "Studia", description: "Kierunek i rok studiów." },
+        { title: "Preferowana ścieżka", description: "Quant Research, Quant Development lub obie." },
+        { title: "Zainteresowania", description: "Krótka odpowiedź o Twoich zainteresowaniach naukowych lub technicznych." },
+        { title: "Link do profilu (opcjonalnie)", description: "GitHub lub LinkedIn, jeśli chcesz go udostępnić." },
+        { title: "Udział w projekcie", description: "Czy interesuje Cię dołączenie do projektu." },
       ],
+      membershipTitle: "Członkostwo w kole",
+      membershipDescription: "Dla studentów zainteresowanych finansami ilościowymi, matematyką, programowaniem lub pokrewnymi dziedzinami. Doświadczenie w finansach nie jest wymagane.",
+      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Samo dołączenie do serwera Discord nie oznacza członkostwa.",
+      projectTitle: "Udział w projektach",
+      projectDescription: "Liderzy poszczególnych projektów badawczych i inżynieryjnych mogą określać wymagania techniczne, nakład czasu oraz zasady wyboru uczestników.",
     },
     footer: {
       description: "Studencka inicjatywa badawczo-projektowa na AGH w Krakowie.",
@@ -290,20 +307,31 @@ export const siteCopy: Record<Language, SiteCopy> = {
     },
     recruitment: {
       eyebrow: "Get involved",
-      title: "Develop your practice through shared work.",
-      description: "Choose Research or Development to participate in team work and technical discussions. Finance experience is not required. Before applications open, you can review the information to prepare for joining.",
+      title: "Curiosity comes first.",
+      description: [
+        "You don't need an extensive portfolio or previous experience in quantitative finance to join us.",
+        "Tell us a little about yourself, your interests, and what you'd like to explore.",
+      ],
+      supportingNote: "Technical expectations for individual research and engineering projects may vary.",
       formLabel: "The form will be published when recruitment formally opens.",
       previewAction: "How to Join",
       closePreview: "Close",
-      sheetEyebrow: "Application preparation",
-      sheetTitle: "Four things we want to know about you.",
-      sheetDescription: "This is not the active application form yet. The list helps you prepare the essential information in advance.",
+      sheetEyebrow: "How to Join",
+      sheetTitle: "Joining starts with a short application.",
+      sheetDescription: "When recruitment opens, a short application will help us learn about you and your interests. The information below is a preview, not an active form.",
       items: [
-        { index: "01", title: "CV", description: "Briefly show your education, technical skills and relevant activity." },
-        { index: "02", title: "A short introduction", description: "Tell us what interests you and whether Research or Development is a better fit." },
-        { index: "03", title: "Projects", description: "Describe the problem, your contribution, the tools used and the most important lesson." },
-        { index: "04", title: "Motivation", description: "Explain why you want to join AGH Quant Finance specifically." },
+        { title: "Contact details", description: "Your name and email address." },
+        { title: "Studies", description: "Your field and year of study." },
+        { title: "Preferred track", description: "Quant Research, Quant Development, or both." },
+        { title: "Interests", description: "A short answer about your academic or technical interests." },
+        { title: "Profile link (optional)", description: "GitHub or LinkedIn, if you'd like to share one." },
+        { title: "Project participation", description: "Whether you're interested in joining a project." },
       ],
+      membershipTitle: "Society membership",
+      membershipDescription: "For students interested in quantitative finance, mathematics, programming or related fields. Prior finance experience is not required.",
+      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Joining the Discord server alone does not grant membership.",
+      projectTitle: "Project participation",
+      projectDescription: "Leaders of individual research and engineering projects may set technical prerequisites, time commitments and selection processes.",
     },
     footer: {
       description: "A student research and project initiative at AGH University in Kraków.",
