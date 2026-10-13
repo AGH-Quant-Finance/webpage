@@ -40,10 +40,8 @@ export type SiteCopy = {
     title: string;
     accent: string;
     lead: string;
-    primaryAction: string;
     consoleLabel: string;
     skillsLabel: string;
-    signature: string;
     skipLink: string;
     targetPath: string;
     semesterOutput: string;
@@ -117,10 +115,8 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Rozwijamy finanse ilościowe",
       accent: "przez badania i inżynierię.",
       lead: "Studenckie koło naukowe przy AGH w Krakowie. Łączymy rzetelne badania ilościowe, odtwarzalne eksperymenty i budowę wydajnych systemów finansowych.",
-      primaryAction: "Nasze podejście",
       consoleLabel: "Dwie ścieżki. Wspólny kierunek.",
       skillsLabel: "Obszary pracy",
-      signature: "Ludzie. Modele. Rynki.",
       skipLink: "Przejdź do treści",
       targetPath: "Wybrana ścieżka",
       semesterOutput: "Efekt semestru",
@@ -242,10 +238,8 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Advancing quantitative finance",
       accent: "through research and engineering.",
       lead: "A student-led scientific society at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
-      primaryAction: "Our Approach",
       consoleLabel: "Two paths. A shared direction.",
       skillsLabel: "Areas of work",
-      signature: "People. Models. Markets.",
       skipLink: "Skip to content",
       targetPath: "Selected path",
       semesterOutput: "Semester output",

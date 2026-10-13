@@ -117,14 +117,8 @@ a { color: inherit; }
 }
 .hero h1 em { color: var(--accent); font-style: normal; }
 .hero-lead { max-width: 580px; margin: 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
-.hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 24px; margin-top: 28px; }
 .primary-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; padding: 12px 20px; border: 1px solid var(--accent); border-radius: 7px; background: var(--accent); color: white; cursor: pointer; text-decoration: none; font-size: .82rem; font-weight: 550; }
 .primary-button:hover { background: #0f3794; border-color: #0f3794; }
-.secondary-link { min-height: 48px; display: inline-flex; align-items: center; gap: 14px; color: var(--ink); font-size: .82rem; text-decoration: none; }
-.secondary-link:hover { color: var(--accent); }
-.hero-caption { grid-column: 1 / -1; display: flex; justify-content: space-between; gap: 24px; margin-top: 48px; padding-block: 20px; border-top: 1px solid var(--line); color: var(--quiet); font: .75rem/1.6 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
-.hero-caption > span:last-child { letter-spacing: 0; }
-.hero-caption span span { padding-inline: 10px; color: var(--blue-soft); }
 .path-console { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(135deg, #f0f5ff, #fff 70%); }
 .path-console__header { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; color: var(--muted); font-size: .75rem; }
 .path-console__header > span:last-child { color: var(--accent); font-size: 1rem; }
@@ -246,7 +240,6 @@ a { color: inherit; }
   .hero-copy { padding: 0; }
   .hero h1 { max-width: 650px; font-size: clamp(2.5rem, 6.6vw, 3.4rem); }
   .hero-console { max-width: 600px; }
-  .hero-caption { margin-top: 16px; }
   .path-panel__title { flex-wrap: nowrap; }
   .path-description, .skill-list { min-height: 0; }
   .disciplines, .community__inner, .recruitment__inner, .community-pillars { grid-template-columns: 1fr; }
@@ -269,8 +262,6 @@ a { color: inherit; }
   .hero .eyebrow { max-width: 100%; font-size: .75rem; }
   .hero h1 { margin-block: 22px 24px; font-size: 2.5rem; line-height: 1.12; letter-spacing: -.045em; }
   .hero-lead { font-size: .92rem; line-height: 1.8; }
-  .hero-actions { margin-top: 26px; gap: 12px; align-items: flex-start; flex-direction: column; }
-  .hero-caption { gap: 8px; flex-direction: column; margin-top: 4px; padding-block: 20px; font-size: .75rem; }
   .path-panel__title h2 { font-size: 1.25rem; }
   .path-panel { padding: 24px 20px; }
   .path-output strong { font-size: .75rem; }
