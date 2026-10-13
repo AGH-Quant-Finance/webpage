@@ -27,10 +27,9 @@ npm run build
 
 ## Przed uruchomieniem rekrutacji
 
-- podłączyć właściwy formularz,
-- dodać oficjalne dane kontaktowe,
-- zatwierdzić listę projektów pierwszego cyklu,
-- potwierdzić formalną nazwę koła oraz zasady użycia identyfikacji AGH.
+- zatwierdzić finalną klauzulę prywatności, administratora/podstawę prawną, zasady Google i wdrożenie retencji,
+- zaktualizować istniejący formularz bez tworzenia duplikatu i sprawdzić publiczny dostęp oraz prywatność odpowiedzi,
+- dopiero potem osobno zatwierdzić zmianę konfiguracji rekrutacji i wdrożenie. Adres dla respondentów jest już zapisany; samo opublikowanie formularza nie otwiera naboru na stronie.
 
 ## Identyfikacja wizualna — Phase 1
 
@@ -56,13 +55,13 @@ Build tworzy `dist/projects/index.html`, korzystając z istniejącej aplikacji i
 
 Rekrutacja pozostaje zamknięta: `src/recruitmentConfig.ts` ma `state: "closed"` oraz podany przez koło adres dla respondentów, który nie jest wyświetlany jako aktywny link. Działające Jak dołączyć pozostaje dostępne. Dopiero po zatwierdzeniu formularza i klauzuli prywatności przez Zarząd, publikacji za wyraźną zgodą oraz sprawdzeniu dostępu do właściwego formularza można ustawić `state: "open"`. Brak lub nieprawidłowy adres zachowuje istniejący podgląd. Strona nie sprawdza automatycznie dostępności Google ani nie otwiera naboru.
 
-Formularz i arkusz już istnieją na koncie koła. W przeglądarce konta koła zaktualizowano tytuł i dwujęzyczny wstęp oraz sprawdzono pytania, walidację, ustawienia i ograniczony dostęp. W istniejącym projekcie Google Apps Script uruchomiono aktualizację i audyt bez tworzenia nowych zasobów. Projekt klauzuli w obu językach zawiera propozycje administratora, podstawy prawnej i terminów 90 dni od decyzji, wycofania lub przyjęcia; przechowywanie ewidencji członków wymaga odrębnej polityki. Propozycja wymaga przeglądu Zarządu i AGH. Formularz nadal jest nieopublikowany. Funkcja `updateMembershipApplication` może ponownie zastosować treść do zapisanych ID bez tworzenia plików; nie uruchamiać procedury tworzenia ani nie zerować ID. Klauzula prywatności i uruchomienie naboru wymagają zatwierdzenia:
+Formularz i arkusz już istnieją na koncie koła. W przeglądarce konta koła zaktualizowano tytuł i dwujęzyczny wstęp oraz sprawdzono pytania, walidację, ustawienia i ograniczony dostęp. W istniejącym projekcie Google Apps Script uruchomiono aktualizację i audyt bez tworzenia nowych zasobów. Projekt klauzuli w obu językach zawiera propozycje administratora, podstawy prawnej i terminów 90 dni od decyzji, wycofania lub przyjęcia; przechowywanie ewidencji członków wymaga odrębnej polityki. Propozycja wymaga przeglądu Zarządu i AGH. Weryfikacja z 14 października 2026 potwierdza, że formularz został opublikowany i przyjmuje odpowiedzi; strona dla respondentów zwraca HTTP 200 bez uprawnień edytora. Nadal zawiera jednak projekt klauzuli i nierozstrzygnięte pola. Publikacja nie potwierdza zatwierdzenia prywatności. Arkusz pozostaje prywatny, a publiczne podsumowanie odpowiedzi jest wyłączone. Konfiguracja strony pozostaje zamknięta; Zarząd powinien zweryfikować już włączone zbieranie odpowiedzi. Funkcja `updateMembershipApplication` może ponownie zastosować zatwierdzoną treść do zapisanych ID bez tworzenia plików, ale wymaga wcześniejszego wyłączenia odpowiedzi i cofnięcia publikacji istniejącego formularza. Nie uruchamiać procedury tworzenia ani nie zerować ID. Klauzula prywatności i uruchomienie naboru wymagają zatwierdzenia:
 
 - [Weryfikacja istniejącego formularza i kroki zatwierdzenia naboru](docs/membership/google-forms-setup.md).
 - [Projekt klauzuli prywatności do zatwierdzenia przez Zarząd](docs/membership/privacy-notice-draft.md).
 - [Weryfikacja i zrzuty ekranu](docs/projects-and-membership-review.md).
 
-Dodatkowe testy stanu rekrutacji i zabezpieczeń skryptu (Node 22.6+; bez nowych zależności):
+Dodatkowe testy stanu rekrutacji i zabezpieczeń skryptu (zalecany Node 22.12+ i npm 10.x dla całego projektu; bez nowych zależności):
 
 ```bash
 node --experimental-strip-types --test tests/*.test.mjs
@@ -73,3 +72,5 @@ Testy skryptu używają atrap usług; nie potwierdzają rzeczywistej własności
 ## Przekazanie do wdrożenia
 
 [Instrukcja dla Quant Dev Leada](docs/deployment-handoff.md) obejmuje build, routing `/projects`, domenę/DNS, konfigurację, uruchamianie i zamykanie rekrutacji, publiczne linki projektów oraz testy po wdrożeniu. Frontend jest gotowy niezależnie od zatwierdzenia klauzuli; nabór pozostaje zamknięty.
+
+[Krótkie podsumowanie do udostępnienia](docs/handoff-summary.md) · [Proponowana ocena prawnie uzasadnionego interesu](docs/membership/legitimate-interest-assessment.md).

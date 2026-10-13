@@ -1,0 +1,13 @@
+# Handoff to the Quant Development Lead
+
+The Quant Finance AGH website is complete and PR #3 is merged into `main` (verified baseline: `16c679f4049eff6cca90f0a7cbafe56031796feb`). It includes the approved React/TypeScript/Vite design, official branding, responsive glass navigation, EN/PL content, homepage sections and four Exploring initiatives on `/projects`.
+
+Run locally with Node 22.12+ and npm 10.x: `npm ci`, then `npm run dev`. Before release run `npm run lint`, `node --experimental-strip-types --test tests/*.test.mjs`, `npm run build` and `git diff --check`. Installation, lint, all 12 tests and build pass; local production-output checks pass. No public-host deployment test is claimed.
+
+Deploy the complete `dist/` at the domain root on a static HTTPS host. Serve `/` from `index.html` and `/projects` or `/projects/` from `projects/index.html`; preserve that visible pathname. Choose hosting/domain, obtain private access, apply provider-issued DNS records, configure TLS/cache/release/rollback, then run the documented public-host smoke tests. No backend or frontend secrets/environment variables are needed.
+
+Recruitment remains `closed` in `src/recruitmentConfig.ts`; How to Join opens the accessible information dialog. The existing Google Form is now published and accepting responses, and its respondent page is public, but its privacy section still contains a review draft and unresolved fields. The response sheet is restricted and public summaries are off. Final privacy/controller/basis, Google arrangements and retention implementation approval remain pending; publication is not approval. The Board should review the already-enabled collection setting. This handoff changes neither Google settings nor website recruitment.
+
+After approval, update the existing form through the saved-ID procedure (never recreate it), verify public respondent access/private responses, and submit a focused change to `state: "open"` with the verified existing URL. Rebuild/release to display Apply to Join / Dołącz do koła. To close, disable Google responses first, then set website state to closed and rebuild/release. Project copy/status/public-link maintenance is documented and requires deliberate review.
+
+Full instructions: [docs/deployment-handoff.md](deployment-handoff.md). Privacy review: [bilingual notice](membership/privacy-notice-draft.md), [proposed legitimate-interest assessment](membership/legitimate-interest-assessment.md) and [existing-form procedure](membership/google-forms-setup.md). Hosting/deployment and ongoing maintenance are yours; Board/privacy approvals remain with the responsible society/institutional owners.
