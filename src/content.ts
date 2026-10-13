@@ -27,9 +27,10 @@ export type SiteCopy = {
   header: {
     navigationLabel: string;
     paths: string;
+    projects: string;
     approach: string;
     community: string;
-    recruitment: string;
+    joinAction: string;
     status: string;
     openMenu: string;
     closeMenu: string;
@@ -39,11 +40,8 @@ export type SiteCopy = {
     title: string;
     accent: string;
     lead: string;
-    primaryAction: string;
-    secondaryAction: string;
     consoleLabel: string;
     skillsLabel: string;
-    signature: string;
     skipLink: string;
     targetPath: string;
     semesterOutput: string;
@@ -76,6 +74,9 @@ export type SiteCopy = {
     supportingNote: string;
     formLabel: string;
     previewAction: string;
+    applyAction: string;
+    openNotice: string;
+    externalNotice: string;
     closePreview: string;
     sheetEyebrow: string;
     sheetTitle: string;
@@ -101,9 +102,10 @@ export const siteCopy: Record<Language, SiteCopy> = {
     header: {
       navigationLabel: "Główna nawigacja",
       paths: "Ścieżki",
+      projects: "Projekty",
       approach: "Podejście",
       community: "Społeczność",
-      recruitment: "Rekrutacja",
+      joinAction: "Dołącz do nas",
       status: "Formularz wkrótce",
       openMenu: "Otwórz menu",
       closeMenu: "Zamknij menu",
@@ -113,11 +115,8 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Rozwijamy finanse ilościowe",
       accent: "przez badania i inżynierię.",
       lead: "Studenckie koło naukowe przy AGH w Krakowie. Łączymy rzetelne badania ilościowe, odtwarzalne eksperymenty i budowę wydajnych systemów finansowych.",
-      primaryAction: "Nasze podejście",
-      secondaryAction: "Jak dołączyć",
       consoleLabel: "Dwie ścieżki. Wspólny kierunek.",
       skillsLabel: "Obszary pracy",
-      signature: "Ludzie. Modele. Rynki.",
       skipLink: "Przejdź do treści",
       targetPath: "Wybrana ścieżka",
       semesterOutput: "Efekt semestru",
@@ -193,6 +192,9 @@ export const siteCopy: Record<Language, SiteCopy> = {
       supportingNote: "Wymagania techniczne poszczególnych projektów badawczych i inżynieryjnych mogą się różnić.",
       formLabel: "Formularz zostanie opublikowany po formalnym uruchomieniu naboru.",
       previewAction: "Jak dołączyć",
+      applyAction: "Dołącz do koła",
+      openNotice: "Nabór jest otwarty. Zgłoszenie dotyczy członkostwa w kole, nie konkretnego projektu.",
+      externalNotice: "Formularz Google otworzy się w nowej karcie.",
       closePreview: "Zamknij",
       sheetEyebrow: "Jak dołączyć",
       sheetTitle: "Na początek krótkie zgłoszenie.",
@@ -207,7 +209,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       ],
       membershipTitle: "Członkostwo w kole",
       membershipDescription: "Dla studentów zainteresowanych finansami ilościowymi, matematyką, programowaniem lub pokrewnymi dziedzinami. Doświadczenie w finansach nie jest wymagane.",
-      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Samo dołączenie do serwera Discord nie oznacza członkostwa.",
+      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Wysłanie formularza lub dołączenie do Discorda nie oznacza automatycznego przyjęcia.",
       projectTitle: "Udział w projektach",
       projectDescription: "Liderzy poszczególnych projektów badawczych i inżynieryjnych mogą określać wymagania techniczne, nakład czasu oraz zasady wyboru uczestników.",
     },
@@ -223,9 +225,10 @@ export const siteCopy: Record<Language, SiteCopy> = {
     header: {
       navigationLabel: "Primary navigation",
       paths: "Paths",
+      projects: "Projects",
       approach: "Approach",
       community: "Community",
-      recruitment: "Recruitment",
+      joinAction: "Join Us",
       status: "Form coming soon",
       openMenu: "Open menu",
       closeMenu: "Close menu",
@@ -235,11 +238,8 @@ export const siteCopy: Record<Language, SiteCopy> = {
       title: "Advancing quantitative finance",
       accent: "through research and engineering.",
       lead: "A student-led scientific society at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
-      primaryAction: "Our Approach",
-      secondaryAction: "How to Join",
       consoleLabel: "Two paths. A shared direction.",
       skillsLabel: "Areas of work",
-      signature: "People. Models. Markets.",
       skipLink: "Skip to content",
       targetPath: "Selected path",
       semesterOutput: "Semester output",
@@ -315,6 +315,9 @@ export const siteCopy: Record<Language, SiteCopy> = {
       supportingNote: "Technical expectations for individual research and engineering projects may vary.",
       formLabel: "The form will be published when recruitment formally opens.",
       previewAction: "How to Join",
+      applyAction: "Apply to Join",
+      openNotice: "Applications are open for society membership, independently of individual projects.",
+      externalNotice: "The Google Form opens in a new tab.",
       closePreview: "Close",
       sheetEyebrow: "How to Join",
       sheetTitle: "Joining starts with a short application.",
@@ -329,7 +332,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       ],
       membershipTitle: "Society membership",
       membershipDescription: "For students interested in quantitative finance, mathematics, programming or related fields. Prior finance experience is not required.",
-      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Joining the Discord server alone does not grant membership.",
+      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Submitting the form or joining Discord does not automatically grant membership.",
       projectTitle: "Project participation",
       projectDescription: "Leaders of individual research and engineering projects may set technical prerequisites, time commitments and selection processes.",
     },

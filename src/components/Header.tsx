@@ -1,21 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import type { Language, SiteCopy } from "../content";
+import { navigationItems, recruitmentHref } from "../navigation";
 
 type HeaderProps = {
   copy: SiteCopy["header"];
+  isProjectsPage: boolean;
   language: Language;
   languageLabel: string;
   onToggleLanguage: () => void;
 };
 
-const navigationItems = [
-  { href: "#paths", key: "paths" },
-  { href: "#approach", key: "approach" },
-  { href: "#community", key: "community" },
-  { href: "#recruitment", key: "recruitment" },
-] as const;
-
-export function Header({ copy, language, languageLabel, onToggleLanguage }: HeaderProps) {
+export function Header({ copy, language, languageLabel, onToggleLanguage, isProjectsPage }: HeaderProps) {
+  const items = navigationItems(isProjectsPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLElement>(null);
@@ -51,14 +47,15 @@ export function Header({ copy, language, languageLabel, onToggleLanguage }: Head
   return (
     <header className="site-header">
       <div className="site-header__material">
-        <a className="brand pressable" href="#top" aria-label="Quant Finance AGH" onClick={closeMenu}>
+        <a className="brand pressable" href={isProjectsPage ? "/#top" : "#top"} aria-label="Quant Finance AGH" onClick={closeMenu}>
           <img className="brand__symbol" src="/brand/qfc-symbol.png" width="48" height="41" alt="" fetchPriority="high" />
           <strong>Quant Finance <span>AGH</span></strong>
         </a>
         <nav className="desktop-navigation" aria-label={copy.navigationLabel}>
-          {navigationItems.map((item) => <a key={item.key} href={item.href}>{copy[item.key]}</a>)}
+          {items.map((item) => <a key={item.key} href={item.href} aria-current={isProjectsPage && item.key === "projects" ? "page" : undefined}>{copy[item.key]}</a>)}
         </nav>
         <div className="header-actions">
+          <a className="header-join pressable" href={recruitmentHref(isProjectsPage)}>{copy.joinAction}<span aria-hidden="true">↗</span></a>
           <button className="language-button pressable" type="button" aria-label={languageLabel} onClick={onToggleLanguage}>
             <span data-active={language === "pl" ? "" : undefined}>PL</span><span className="language-divider" aria-hidden="true" />
             <span data-active={language === "en" ? "" : undefined}>EN</span>
@@ -72,9 +69,10 @@ export function Header({ copy, language, languageLabel, onToggleLanguage }: Head
       <div className="mobile-menu-scrim" aria-hidden="true" data-open={menuOpen ? "" : undefined} onClick={closeMenu} />
       <nav className="mobile-menu" id="mobile-menu" ref={menuRef} aria-label={copy.navigationLabel}
         inert={!menuOpen} aria-hidden={!menuOpen} data-open={menuOpen ? "" : undefined}>
-        {navigationItems.map((item) => (
-          <a key={item.key} href={item.href} onClick={closeMenu}>{copy[item.key]}<span aria-hidden="true">↗</span></a>
+        {items.map((item) => (
+          <a key={item.key} href={item.href} aria-current={isProjectsPage && item.key === "projects" ? "page" : undefined} onClick={closeMenu}>{copy[item.key]}<span aria-hidden="true">↗</span></a>
         ))}
+        <a className="mobile-menu__join" href={recruitmentHref(isProjectsPage)} onClick={closeMenu}>{copy.joinAction}<span aria-hidden="true">↗</span></a>
       </nav>
     </header>
   );
