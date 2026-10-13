@@ -50,7 +50,7 @@ Katalog projektów nie jest renderowany na stronie głównej. `src/projectPropos
 
 ## Projekty i członkostwo
 
-`/projects` (także `/projects/`) korzysta ze wspólnego nagłówka, stopki i zapisanego wyboru języka. Cztery inicjatywy mają status Exploring / Rozpoznanie, a pełne propozycje pozostają w `src/projectProposals.ts`. `src/projects.ts` zawiera krótkie opisy i ręcznie aktualizowany status oraz opcjonalne publiczne linki z datą ich weryfikacji. Obecnie żadne linki projektów nie są podane.
+`/projects` (także `/projects/`) korzysta ze wspólnego nagłówka, stopki i zapisanego wyboru języka. Nawigacja informacyjna ma kolejność Paths → Approach → Community → Projects; Dołącz do nas jest osobnym CTA przy przełączniku języka na desktopie i ostatnią wyróżnioną pozycją menu mobilnego oraz stopki. Strona projektów zawiera link Powrót na stronę główną. Cztery inicjatywy mają status Exploring / Rozpoznanie, a pełne propozycje pozostają w `src/projectProposals.ts`. `src/projects.ts` zawiera krótkie opisy i ręcznie aktualizowany status oraz opcjonalne publiczne linki z datą ich weryfikacji. Obecnie żadne linki projektów nie są podane.
 
 Build tworzy `dist/projects/index.html`, korzystając z istniejącej aplikacji i bez zależności routingu. Hosting powinien serwować cały `dist` z katalogowymi plikami `index.html`; przekierowanie `/projects` → `/projects/` jest dopuszczalne. Nie wymaga to globalnego SPA rewrite. Jeśli wybrana platforma obsługuje wyłącznie pojedynczy punkt wejścia, należy uzgodnić mapowanie `/projects` do tego pliku. Brak publicznego hostingu oznacza, że test na docelowej platformie jest nadal do wykonania. Nie zmieniono ustawień wdrożenia.
 

@@ -15,6 +15,7 @@ export default function ProjectsPage({ language }: { language: Language }) {
 
   return (
     <div className="projects-page shell">
+      <a className="projects-back-link" href="/">{copy.backHome}</a>
       <header className="projects-introduction" data-reveal>
         <div><p className="eyebrow">{copy.eyebrow}</p><h1>{copy.title}</h1></div>
         <div className="projects-introduction__copy"><p>{copy.description}</p><p className="projects-formation-note">{copy.formationNote}</p></div>

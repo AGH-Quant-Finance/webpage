@@ -30,7 +30,7 @@ export type SiteCopy = {
     projects: string;
     approach: string;
     community: string;
-    recruitment: string;
+    joinAction: string;
     status: string;
     openMenu: string;
     closeMenu: string;
@@ -108,7 +108,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       projects: "Projekty",
       approach: "Podejście",
       community: "Społeczność",
-      recruitment: "Rekrutacja",
+      joinAction: "Dołącz do nas",
       status: "Formularz wkrótce",
       openMenu: "Otwórz menu",
       closeMenu: "Zamknij menu",
@@ -234,7 +234,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       projects: "Projects",
       approach: "Approach",
       community: "Community",
-      recruitment: "Recruitment",
+      joinAction: "Join Us",
       status: "Form coming soon",
       openMenu: "Open menu",
       closeMenu: "Close menu",

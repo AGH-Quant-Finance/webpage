@@ -28,6 +28,7 @@ export function publicProjectUrl(link: VerifiedPublicLink | undefined): string |
 }
 
 type ProjectsCopy = {
+  backHome: string;
   eyebrow: string;
   title: string;
   description: string;
@@ -39,6 +40,7 @@ type ProjectsCopy = {
 
 export const projectsCopy: Record<Language, ProjectsCopy> = {
   en: {
+    backHome: "← Back to home",
     eyebrow: "Projects",
     title: "What we're currently exploring.",
     description: "From empirical financial research to high-performance market infrastructure, our first initiatives explore the intersection of quantitative finance, mathematics, and software engineering.",
@@ -65,6 +67,7 @@ export const projectsCopy: Record<Language, ProjectsCopy> = {
     },
   },
   pl: {
+    backHome: "← Powrót na stronę główną",
     eyebrow: "Projekty",
     title: "Kierunki, które obecnie zgłębiamy.",
     description: "Od empirycznych badań finansowych po wydajną infrastrukturę rynkową — nasze pierwsze inicjatywy łączą finanse ilościowe, matematykę i inżynierię oprogramowania.",

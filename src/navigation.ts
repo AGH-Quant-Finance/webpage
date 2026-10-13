@@ -2,9 +2,12 @@ export function navigationItems(isProjectsPage: boolean) {
   const home = isProjectsPage ? "/" : "";
   return [
     { href: `${home}#paths`, key: "paths" },
-    { href: "/projects", key: "projects" },
     { href: `${home}#approach`, key: "approach" },
     { href: `${home}#community`, key: "community" },
-    { href: `${home}#recruitment`, key: "recruitment" },
+    { href: "/projects", key: "projects" },
   ] as const;
+}
+
+export function recruitmentHref(isProjectsPage: boolean) {
+  return isProjectsPage ? "/#recruitment" : "#recruitment";
 }

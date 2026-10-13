@@ -7,7 +7,8 @@ Branch: `feat/projects-and-membership`, created from `main` at `1e6970f`. This i
 - `/projects` and `/projects/` present four concise bilingual entries in Quant Research and Quant Development groups. The English heading, introduction and summaries follow the supplied brief. All four display **Exploring / Rozpoznanie**, with a note that team formation is beginning.
 - IDs, numbering and grouping come from `src/projectProposals.ts`. That complete file is byte-for-byte unchanged from main; scientific methods, technical scope, evaluation, deliverables and proposed staffing/durations remain preserved. The short presentation copy and manually maintained publication status live separately in `src/projects.ts`.
 - Optional repository, documentation and publication/report links have a URL plus a required verification date. No links are configured or rendered. A date records manual verification; it does not automatically check a URL or advance status. Project status changes require a reviewed source change with verified evidence.
-- Desktop/mobile navigation and the footer share the same Projects link. The existing navigation material and all prior style rules are unchanged. On Projects, section links point back to the homepage and the active page is identified with `aria-current="page"`.
+- Informational navigation follows Paths → Approach → Community → Projects (with Polish labels). Desktop Join Us ↗ / Dołącz do nas ↗ is a separate quiet blue action next to the PL/EN switcher. On mobile it is the final menu action, separated by a thin rule; the footer follows the same hierarchy and ends with Join Us. Projects always opens in the same tab. The existing glass material, logo and menu behavior remain unchanged. On Projects, homepage links use `/#...` and the active page is identified with `aria-current="page"`.
+- Projects has a small ← Back to home / ← Powrót na stronę główną link above the introduction, pointing to `/` and retaining the saved language preference.
 - Page changes use native links. No routing dependency was added; the Projects module loads separately. Explicit PL/EN preferences survive native page navigation and reloads. Fresh visitors start in English.
 - A small initial-fragment effect scrolls/focuses homepage sections after React mounts, so cross-page section links work with keyboard navigation. Existing same-page links retain their behavior.
 
@@ -42,12 +43,22 @@ Manual steps remain: authorize/run under the verified society account; inspect r
 - Apps Script tests use service doubles; they verify local syntax/control flow, **not actual Google execution or account ownership**.
 - Chromium production-output tests pass in EN/PL at **375, 768, 1440 and 1920px**: direct `/projects`, refresh, four statuses, correct groups/indices, no invented project links, shared navigation/footer links, cross-page section focus/clearance, language persistence and brand-home links.
 - Skip link, keyboard Enter navigation, mobile menu initial focus/Escape restoration and closed recruitment dialog Tab/Shift+Tab containment, Escape/close/backdrop dismissal, body scroll lock and focus restoration pass. Tests include reduced motion.
-- No horizontal document overflow, JavaScript/console errors or failed requests in the eight viewport/language runs. Visual review covers desktop and mobile in both languages.
+- The final navigation refinement is checked on both pages in EN/PL at 375, 768, 1101, 1440 and 1920px. The 1101px desktop threshold fits all header items, including the Polish Join Us label. Every header/menu/footer destination, same-tab Projects navigation, cross-page section focus, Back to home, language persistence and Escape/menu closure are verified.
+- No horizontal document overflow, JavaScript/console errors or failed requests in the viewport/language runs. Visual review covers desktop and mobile in both languages.
 - Normal-motion and browser-storage failure checks also pass; the retained hero tab controls still support Arrow/Home/End navigation. Solid reduced-transparency styles are preserved unchanged.
 
 Firefox/Safari, the actual future hosting platform and live Google ownership/settings/response destination have not been independently verified. These limits are separate from the passing local site checks.
 
 ## Screenshots
+
+### Navigation refinement
+
+| Language | Desktop header · homepage | Desktop header · Projects | Mobile menu · homepage | Mobile menu · Projects |
+| --- | --- | --- | --- | --- |
+| English | [Header](screenshots/projects-and-membership/en-home-desktop-navigation.png) | [Header and back link](screenshots/projects-and-membership/en-projects-desktop-navigation.png) | [Menu](screenshots/projects-and-membership/en-home-mobile-menu.png) | [Menu](screenshots/projects-and-membership/en-projects-mobile-menu.png) |
+| Polish | [Header](screenshots/projects-and-membership/pl-home-desktop-navigation.png) | [Header and back link](screenshots/projects-and-membership/pl-projects-desktop-navigation.png) | [Menu](screenshots/projects-and-membership/pl-home-mobile-menu.png) | [Menu](screenshots/projects-and-membership/pl-projects-mobile-menu.png) |
+
+### Complete pages
 
 Projects captures use 375 × 812 or 768/1440/1920 × 1000 browser viewports; screenshot height follows the page content.
 
