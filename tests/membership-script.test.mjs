@@ -5,8 +5,8 @@ import { readFile } from "node:fs/promises";
 
 const source = await readFile(new URL("../scripts/google-forms/MembershipApplication.gs", import.meta.url), "utf8");
 
-function googleDouble({ account = "society@test.invalid", owner = account, sheetFailure = false } = {}) {
-  const values = new Map([["SOCIETY_ACCOUNT_EMAIL", "society@test.invalid"]]);
+function googleDouble({ account = "agh.quant.finance@gmail.com", owner = account, sheetFailure = false } = {}) {
+  const values = new Map([["SOCIETY_ACCOUNT_EMAIL", "agh.quant.finance@gmail.com"]]);
   const properties = {
     getProperty: (key) => values.get(key),
     setProperty: (key, value) => values.set(key, value),
@@ -21,23 +21,27 @@ function googleDouble({ account = "society@test.invalid", owner = account, sheet
       record[`set${setter}`] = (value) => { record[setter.toLowerCase()] = value; return record; };
     record.getType = () => type;
     record.getTitle = () => record.title;
+    record.getHelpText = () => record.helptext;
+    record.getChoices = () => record.choicevalues.map((value) => ({ getValue: () => value }));
     record.isRequired = () => record.required;
-    record.asTextItem = record.asParagraphTextItem = record.asMultipleChoiceItem = () => record;
+    record.asTextItem = record.asParagraphTextItem = record.asMultipleChoiceItem = record.asSectionHeaderItem = () => record;
     items.push(record);
     return record;
   };
   const form = {
-    getId: () => "form-id", getItems: () => items,
+    getId: () => "form-id", getItems: (type) => type ? items.filter((item) => item.type === type) : items,
+    getTitle: () => settings.Title,
     addTextItem: () => item("TEXT"), addParagraphTextItem: () => item("PARAGRAPH_TEXT"),
     addMultipleChoiceItem: () => item("MULTIPLE_CHOICE"), addSectionHeaderItem: () => item("HEADER"),
     supportsAdvancedResponderPermissions: () => true,
     isPublished: () => settings.Published, isAcceptingResponses: () => settings.AcceptingResponses,
     isPublishingSummary: () => settings.PublishingSummary, collectsEmail: () => settings.CollectEmail,
     isQuiz: () => settings.IsQuiz, getDestinationId: () => settings.destination,
+    getDestinationType: () => "SPREADSHEET", hasLimitOneResponsePerUser: () => settings.LimitOneResponsePerUser,
     getEditUrl: () => "editor-fixture", getPublishedUrl: () => "respondent-fixture",
     setDestination: (type, id) => { settings.destination = id; return form; },
   };
-  for (const setter of ["Published", "AcceptingResponses", "Description", "IsQuiz", "CollectEmail", "LimitOneResponsePerUser", "AllowResponseEdits", "PublishingSummary", "ShowLinkToRespondAgain", "ShuffleQuestions", "ProgressBar", "ConfirmationMessage", "CustomClosedFormMessage"])
+  for (const setter of ["Title", "Published", "AcceptingResponses", "Description", "IsQuiz", "CollectEmail", "LimitOneResponsePerUser", "AllowResponseEdits", "PublishingSummary", "ShowLinkToRespondAgain", "ShuffleQuestions", "ProgressBar", "ConfirmationMessage", "CustomClosedFormMessage"])
     form[`set${setter}`] = (value) => { settings[setter] = value; events.push([setter, value]); return form; };
   const file = {
     getOwner: () => ({ getEmail: () => owner }), getSharingAccess: () => "PRIVATE",
@@ -58,10 +62,10 @@ function googleDouble({ account = "society@test.invalid", owner = account, sheet
     PropertiesService: { getScriptProperties: () => properties },
     Session: { getEffectiveUser: () => ({ getEmail: () => account }) },
     FormApp: {
-      create: (title, published) => { settings.Published = published; events.push(["create", title, published]); return form; },
+      create: (title, published) => { settings.Title = title; settings.Published = published; events.push(["create", title, published]); return form; },
       openById: () => form, createTextValidation: validation,
       DestinationType: { SPREADSHEET: "SPREADSHEET" },
-      ItemType: { TEXT: "TEXT", PARAGRAPH_TEXT: "PARAGRAPH_TEXT", MULTIPLE_CHOICE: "MULTIPLE_CHOICE" },
+      ItemType: { TEXT: "TEXT", PARAGRAPH_TEXT: "PARAGRAPH_TEXT", MULTIPLE_CHOICE: "MULTIPLE_CHOICE", SECTION_HEADER: "HEADER" },
     },
     DriveApp: { getFileById: () => file, Access: { PRIVATE: "PRIVATE" }, Permission: { NONE: "NONE" } },
     SpreadsheetApp: {
@@ -116,10 +120,79 @@ test("ownership or partial-setup failure leaves collection closed and prevents d
 });
 
 test("inspection rejects a drifted summary setting or opened collection", () => {
-  for (const setting of ["PublishingSummary", "Published", "AcceptingResponses"]) {
+  for (const setting of ["PublishingSummary", "Published", "AcceptingResponses", "CollectEmail", "IsQuiz", "LimitOneResponsePerUser"]) {
     const mock = googleDouble();
     mock.context.createMembershipApplication();
     mock.settings[setting] = true;
     assert.throws(() => mock.context.inspectMembershipDraft(), /configuration differs/);
   }
+});
+
+test("existing-draft updates reuse IDs and preserve questions, validation, choices and closed settings", () => {
+  const mock = googleDouble();
+  mock.context.createMembershipApplication(); // Local fixture setup only, never a live Google call.
+  const questions = mock.items.slice(0, 7).map((item) => ({ ...item }));
+  const ids = [mock.values.get("MEMBERSHIP_FORM_ID"), mock.values.get("MEMBERSHIP_SHEET_ID")];
+  const initialEvents = mock.events.length;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const report = mock.context.updateMembershipApplication();
+    assert.equal(report.title, "Join Quant Finance AGH");
+    assert.equal(report.acceptingResponses, false);
+    assert.equal(report.published, false);
+    assert.equal(report.privacyContainsPlaceholders, true);
+    assert.match(mock.settings.Description, /^Membership Application \/ Zgłoszenie do koła naukowego/);
+    assert.match(mock.settings.Description, /Previous experience in quantitative finance is not required/);
+    assert.match(mock.settings.Description, /Wcześniejsze doświadczenie w finansach ilościowych nie jest wymagane/);
+    assert.deepEqual(mock.items.slice(0, 7), questions);
+    assert.deepEqual([mock.values.get("MEMBERSHIP_FORM_ID"), mock.values.get("MEMBERSHIP_SHEET_ID")], ids);
+  }
+  assert.equal(mock.items.length, 8);
+  assert.ok(mock.events.slice(initialEvents).every(([event]) => ["Title", "Description"].includes(event)));
+  assert.equal(mock.events.filter(([name]) => name === "create").length, 1);
+});
+
+test("existing-draft updater refuses missing IDs and a spoofed account without creating files", () => {
+  const missing = googleDouble();
+  assert.throws(() => missing.context.updateMembershipApplication(), /incomplete/);
+  assert.equal(missing.events.length, 0);
+  const spoofed = googleDouble({ account: "personal@test.invalid" });
+  spoofed.values.set("SOCIETY_ACCOUNT_EMAIL", "personal@test.invalid");
+  assert.throws(() => spoofed.context.updateMembershipApplication(), /same account/);
+  assert.equal(spoofed.events.length, 0);
+});
+
+test("updater refuses settings and question drift before making presentation changes", () => {
+  const changes = [
+    (mock) => { mock.settings.Published = true; },
+    (mock) => { mock.settings.AcceptingResponses = true; },
+    (mock) => { mock.settings.destination = "wrong-sheet"; },
+    (mock) => { mock.items[0].required = false; mock.items[5].required = true; },
+    (mock) => { mock.items[3].choicevalues.push("unapproved choice"); },
+    (mock) => { mock.items.push({ getType: () => "FILE_UPLOAD" }); },
+    (mock) => { mock.items[7].title = "Unexpected section"; },
+  ];
+  for (const drift of changes) {
+    const mock = googleDouble();
+    mock.context.createMembershipApplication();
+    drift(mock);
+    const initialEvents = mock.events.length;
+    assert.throws(() => mock.context.updateMembershipApplication());
+    assert.equal(mock.events.length, initialEvents);
+  }
+});
+
+test("approved notice updates one existing privacy section and rejects placeholders", () => {
+  const mock = googleDouble();
+  mock.context.createMembershipApplication();
+  mock.values.set("APPROVED_PRIVACY_NOTICE", "[APPROVE: controller]");
+  const initialEvents = mock.events.length;
+  assert.throws(() => mock.context.updateMembershipApplication(), /draft markers/);
+  assert.equal(mock.events.length, initialEvents);
+  const notice = "Approved bilingual notice fixture / Zatwierdzona klauzula testowa";
+  mock.values.set("APPROVED_PRIVACY_NOTICE", notice);
+  const report = mock.context.updateMembershipApplication();
+  assert.equal(mock.items[7].helptext, notice);
+  assert.equal(report.privacyContainsPlaceholders, false); // Not a certification of legal approval.
+  assert.equal(mock.items.length, 8);
+  assert.equal(report.published, false);
 });

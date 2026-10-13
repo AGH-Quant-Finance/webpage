@@ -3,10 +3,11 @@ export type RecruitmentConfig = {
   applicationUrl: string | null;
 };
 
-// Open only after Board approval and verification of the public respondent URL.
+// Supplied by the society; publication/respondent access still needs launch verification.
+// A saved respondent URL does not open recruitment or expose an application link.
 export const recruitmentConfig: RecruitmentConfig = {
   state: "closed",
-  applicationUrl: null,
+  applicationUrl: "https://docs.google.com/forms/d/e/1FAIpQLSej9QB3LeBTa2dCFedgb-AirSSzWYmJh1WDehHt5PF9sTYo3w/viewform",
 };
 
 // An incomplete or invalid configuration keeps the existing How to Join flow.

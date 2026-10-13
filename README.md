@@ -54,11 +54,11 @@ Katalog projektów nie jest renderowany na stronie głównej. `src/projectPropos
 
 Build tworzy `dist/projects/index.html`, korzystając z istniejącej aplikacji i bez zależności routingu. Hosting powinien serwować cały `dist` z katalogowymi plikami `index.html`; przekierowanie `/projects` → `/projects/` jest dopuszczalne. Nie wymaga to globalnego SPA rewrite. Jeśli wybrana platforma obsługuje wyłącznie pojedynczy punkt wejścia, należy uzgodnić mapowanie `/projects` do tego pliku. Brak publicznego hostingu oznacza, że test na docelowej platformie jest nadal do wykonania. Nie zmieniono ustawień wdrożenia.
 
-Rekrutacja jest zamknięta, a `src/recruitmentConfig.ts` ma `state: "closed"` i `applicationUrl: null`. Działające Jak dołączyć pozostaje dostępne. Dopiero po zatwierdzeniu formularza i klauzuli prywatności przez Zarząd oraz sprawdzeniu rzeczywistego adresu Google Forms można ustawić `state: "open"` i zweryfikowany URL. Brak lub nieprawidłowy adres zachowuje istniejący podgląd. Strona nie sprawdza automatycznie dostępności Google ani nie otwiera naboru.
+Rekrutacja pozostaje zamknięta: `src/recruitmentConfig.ts` ma `state: "closed"` oraz podany przez koło adres dla respondentów, który nie jest wyświetlany jako aktywny link. Działające Jak dołączyć pozostaje dostępne. Dopiero po zatwierdzeniu formularza i klauzuli prywatności przez Zarząd, publikacji za wyraźną zgodą oraz sprawdzeniu dostępu do właściwego formularza można ustawić `state: "open"`. Brak lub nieprawidłowy adres zachowuje istniejący podgląd. Strona nie sprawdza automatycznie dostępności Google ani nie otwiera naboru.
 
-Nie utworzono jeszcze formularza ani arkusza. Gotowy skrypt Apps Script tworzy siedem dwujęzycznych pytań, nieopublikowany formularz i prywatny arkusz po uruchomieniu na koncie koła:
+Formularz i arkusz już istnieją na koncie koła. W przeglądarce konta koła zaktualizowano tytuł i dwujęzyczny wstęp oraz sprawdzono pytania, walidację, ustawienia i ograniczony dostęp. Formularz nadal jest nieopublikowany. Funkcja `updateMembershipApplication` może ponownie zastosować treść do zapisanych ID bez tworzenia plików; nie uruchamiać procedury tworzenia ani nie zerować ID. Klauzula prywatności i uruchomienie naboru wymagają zatwierdzenia:
 
-- [Uruchomienie, autoryzacja konta koła i zatwierdzenie konfiguracji](docs/membership/google-forms-setup.md).
+- [Weryfikacja istniejącego formularza i kroki zatwierdzenia naboru](docs/membership/google-forms-setup.md).
 - [Projekt klauzuli prywatności do zatwierdzenia przez Zarząd](docs/membership/privacy-notice-draft.md).
 - [Weryfikacja i zrzuty ekranu](docs/projects-and-membership-review.md).
 

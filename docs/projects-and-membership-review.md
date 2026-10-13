@@ -22,24 +22,23 @@ No deployment configuration was changed. The user confirmed there is **no public
 
 ## Recruitment and Google Forms
 
-The website's central configuration is `src/recruitmentConfig.ts`, delivered as `state: "closed"` and `applicationUrl: null`. The existing accessible How to Join dialog remains functional. Missing, invalid or editor URLs fail back to that flow. With an explicitly open state and a verified Google respondent URL, the component displays Apply to Join / Dołącz do koła with a new-tab notice, `target="_blank"` and `rel="noopener noreferrer"`; the preview/scrim are omitted. It does not poll Google or automatically open recruitment.
+The website's central configuration is `src/recruitmentConfig.ts`, delivered as `state: "closed"` with the society-supplied respondent URL saved for a later approved launch. That URL is never rendered as an application link while closed. The existing accessible How to Join dialog remains functional. Missing, invalid, editor or spreadsheet URLs fail back to that flow. An explicitly open state with a verified live Google respondent URL renders Apply to Join / Dołącz do koła, a secure new-tab link and no preview/dialog. The site does not poll Google or automatically open recruitment.
 
-The membership notice now explicitly covers both form submission and Discord not conferring automatic membership. Project participation remains separate, with Board approval under the regulations preserved.
+The existing form and linked response spreadsheet were created by the society before this final setup pass. On 13 October 2026, authenticated browser access under the official account permitted a direct update to **Join Quant Finance AGH**, the supplied subtitle, welcoming bilingual introduction, cobalt accent and neutral background. The original seven questions, six required flags, optional profile and email/URL validations were inspected and preserved. No duplicate form, publication, response submission or activation occurred.
 
-**No Google Form or spreadsheet was created.** Discovery found no native Forms creation capability, and available Google Drive/Gmail/Calendar integrations were unconnected. The society account email and ownership have not been verified. Instead, the requested fallback is provided:
+Account-level UI review confirms the society owner and Restricted owner-only access for form editors and the supplied response sheet; the configured responder audience is Anyone with the link but the form remains unpublished. Google email collection, one-response sign-in requirement, quiz and response summaries are off. A Board-review confirmation message avoids automatic acceptance. The privacy section remains a clearly marked draft pending legal approval. Exact linked destination, future signed-out respondent access, account triggers and institutional policies must be rechecked at launch. No private editor/spreadsheet links or access lists are stored here.
 
-- [Apps Script and account/authorization instructions](membership/google-forms-setup.md).
-- [Seven-question form creator](../scripts/google-forms/MembershipApplication.gs) and [manifest](../scripts/google-forms/appsscript.json).
-- [Bilingual privacy notice draft for Board approval](membership/privacy-notice-draft.md).
+- [Existing-form verification and exact approval/publication/activation steps](membership/google-forms-setup.md).
+- [Idempotent presentation/privacy updater and audit](../scripts/google-forms/MembershipApplication.gs); uses existing private Script properties, checks the official account and audits before writes. It never creates files, edits question settings or publishes. The older creator is retained for history/fixture regression checks and must not be rerun for this form.
+- [Final bilingual privacy draft and unresolved Board/AGH decisions](membership/privacy-notice-draft.md).
+- [Updated unpublished form presentation](screenshots/membership-form-draft.jpg); the capture contains no editor URLs, response-sheet URLs, account lists or applicant data.
 
-The script rejects a missing/different effective account, creates a form unpublished from the outset, disables collection and response summaries, creates/links a private response spreadsheet, verifies ownership/sharing and prevents duplicate drafts. Six of seven questions are required; the profile URL is optional. Track choices include both and not sure yet; study help includes doctoral students. No uploads, additional mandatory questions, quiz, scoring, automatic acceptance, analytics or email triggers are added.
-
-Manual steps remain: authorize/run under the verified society account; inspect real editor/respondent/spreadsheet URLs and Google settings; approve privacy/controller/contact/legal basis/retention and Board access; open recruitment in Google only after approval; verify respondent access; then review a website configuration change. No live application URL is present in the delivered site.
+Resolve controller identity/authority, legal basis, privacy contact, Google arrangements/transfers and retention/deletion; approve the bilingual notice and restricted Board access; then obtain explicit recruitment-launch approval. Publish/verify the existing respondent form first, and separately review website `state: "open"` plus release authorization. This task leaves both the form and website closed.
 
 ## Verification
 
 - `npm ci`, `npm run lint`, `npm run build`, `git diff --check`: passed. No added dependencies or lockfile changes. Installation reports two inherited development-dependency advisories; no unrelated dependency updates were made.
-- Eight automated tests pass using Node's test runner: URL/state fallback and both language CTA variants, secure external link/preview removal, wrong-account rejection, private closed draft/response destination, duplicate/partial-setup handling and settings drift rejection.
+- Twelve automated tests pass using Node's test runner: saved respondent URL remains hidden while closed, both language CTA variants, secure open-state link/preview removal, rejection of editor/sheet URLs and wrong accounts, private draft/response destination, duplicate/partial-setup safeguards, repeatable update preservation, settings/choice drift and privacy-placeholder rejection.
 - Apps Script tests use service doubles; they verify local syntax/control flow, **not actual Google execution or account ownership**.
 - Chromium production-output tests pass in EN/PL at **375, 768, 1440 and 1920px**: direct `/projects`, refresh, four statuses, correct groups/indices, no invented project links, shared navigation/footer links, cross-page section focus/clearance, language persistence and brand-home links.
 - Skip link, keyboard Enter navigation, mobile menu initial focus/Escape restoration and closed recruitment dialog Tab/Shift+Tab containment, Escape/close/backdrop dismissal, body scroll lock and focus restoration pass. Tests include reduced motion.
@@ -47,7 +46,7 @@ Manual steps remain: authorize/run under the verified society account; inspect r
 - No horizontal document overflow, JavaScript/console errors or failed requests in the viewport/language runs. Visual review covers desktop and mobile in both languages.
 - Normal-motion and browser-storage failure checks also pass; the retained hero tab controls still support Arrow/Home/End navigation. Solid reduced-transparency styles are preserved unchanged.
 
-Firefox/Safari, the actual future hosting platform and live Google ownership/settings/response destination have not been independently verified. These limits are separate from the passing local site checks.
+Firefox/Safari, the actual future hosting platform, future signed-out respondent access, independent Google triggers and institutional policies have not been independently verified. Google ownership and the visible editor settings/sharing were checked in the authenticated society browser; local script tests remain separate from live service execution. These limits are separate from the passing local site checks.
 
 ## Screenshots
 
@@ -73,7 +72,7 @@ Earlier homepage comparison captures, before the secondary hero CTA removal: [EN
 
 The hero introduces the society and its two interactive tracks without action links or a caption strip. The distinct navbar Join Us action and Get Involved's existing How to Join interaction remain intact, including the closed recruitment preview and its keyboard behavior. The shared primary-button styles remain in use by recruitment. No navigation, official branding, recruitment functionality or other section changed.
 
-Lint, build and all eight existing tests pass. Chromium verification at 1440px and 375px in English and Polish covers absence of hero links/unused containers, Research/Development click and Arrow/Home/End keyboard switching, retained navigation hierarchy, mobile menu Escape/focus restoration, recruitment dialog opening/Tab/Escape/focus restoration, Projects routing/language persistence and absence of horizontal overflow or browser errors. Removing the action and caption rows contracts the hero naturally; existing responsive grid spacing is preserved.
+Lint, build and all twelve tests pass. Chromium verification at 1440px and 375px in English and Polish covers absence of hero links/unused containers, Research/Development click and Arrow/Home/End keyboard switching, retained navigation hierarchy, mobile menu Escape/focus restoration, recruitment dialog opening/Tab/Escape/focus restoration, Projects routing/language persistence and absence of horizontal overflow or browser errors. Removing the action and caption rows contracts the hero naturally; existing responsive grid spacing is preserved.
 
 | Language | Desktop · 1440px | Mobile · 375px |
 | --- | --- | --- |

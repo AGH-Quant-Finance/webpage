@@ -1,15 +1,19 @@
-/** Run manually in Apps Script while signed in to the society's Google account.
+/** Update the existing draft manually under the society's Google account.
  * Set SOCIETY_ACCOUNT_EMAIL in Project Settings → Script properties first.
+ * Keep the existing form/sheet IDs. Run updateMembershipApplication, not the creator.
  * This script never publishes a form or enables response collection.
  */
-const MEMBERSHIP_TITLE = "Quant Finance AGH — Membership Application";
+const MEMBERSHIP_TITLE = "Join Quant Finance AGH";
 const MEMBERSHIP_DESCRIPTION = [
-  "A short application to join the society (about 2–3 minutes). We welcome students with different experience levels; prior finance experience is not required.",
-  "Research and Development are areas of interest, not exclusive categories. You can explore both before committing to a project. Project participation is separate from society membership.",
-  "Formal membership requires Board approval under the society's regulations. Submitting this form or joining Discord does not automatically grant membership.",
-  "Krótkie zgłoszenie do koła (około 2–3 minuty). Zapraszamy studentów o różnym poziomie doświadczenia; znajomość finansów nie jest wymagana.",
-  "Research i Development to obszary zainteresowań, nie rozłączne kategorie. Możesz poznać oba przed dołączeniem do projektu. Udział w projekcie jest niezależny od członkostwa w kole.",
-  "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Wysłanie formularza lub dołączenie do Discorda nie oznacza automatycznego przyjęcia.",
+  "Membership Application / Zgłoszenie do koła naukowego",
+  "Join a community of students interested in quantitative finance, scientific research, and software engineering.",
+  "Tell us a little about yourself and your interests. Previous experience in quantitative finance is not required.",
+  "Joining the society and participating in individual research or engineering projects are separate processes.",
+  "Formal membership is subject to Board approval.",
+  "Dołącz do społeczności studentów zainteresowanych finansami ilościowymi, badaniami naukowymi i inżynierią oprogramowania.",
+  "Opowiedz nam krótko o sobie i swoich zainteresowaniach. Wcześniejsze doświadczenie w finansach ilościowych nie jest wymagane.",
+  "Członkostwo w kole i udział w poszczególnych projektach badawczych lub inżynieryjnych to odrębne kwestie.",
+  "Formalne członkostwo wymaga zatwierdzenia przez Zarząd.",
 ].join("\n\n");
 
 const PRIVACY_DRAFT = [
@@ -95,10 +99,42 @@ function createMembershipApplication() {
   }
 }
 
+/** Reuses saved IDs; never creates files, edits questions, changes sharing or opens recruitment. */
+function updateMembershipApplication() {
+  const lock = LockService.getScriptLock();
+  lock.waitLock(30000);
+  try {
+    // Audit before any write. Missing IDs, wrong owners, open forms or drift fail closed.
+    inspectMembershipDraft(false);
+    const properties = PropertiesService.getScriptProperties();
+    const form = FormApp.openById(properties.getProperty("MEMBERSHIP_FORM_ID"));
+    const privacy = form.getItems(FormApp.ItemType.SECTION_HEADER).filter(function (item) {
+      return item.getTitle() === "Privacy information / Informacja o danych osobowych";
+    });
+    if (privacy.length !== 1) {
+      throw new Error("Expected one existing privacy section. Repair it manually; no section will be added.");
+    }
+    const approvedNotice = (properties.getProperty("APPROVED_PRIVACY_NOTICE") || "").trim();
+    if (approvedNotice && hasPrivacyPlaceholders_(approvedNotice)) {
+      throw new Error("The approved notice still contains draft markers or placeholders. Obtain Board approval before applying it.");
+    }
+    form.setTitle(MEMBERSHIP_TITLE).setDescription(MEMBERSHIP_DESCRIPTION);
+    if (approvedNotice) privacy[0].asSectionHeaderItem().setHelpText(approvedNotice);
+    // Publication and response settings were checked above and are not changed here.
+    return inspectMembershipDraft();
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function hasPrivacyPlaceholders_(text) {
+  return !text || /\[|\]|\bDRAFT\b|PROJEKT\s*[—:-]|BOARD TO APPROVE|DO ZATWIERDZENIA|ZATWIERDZIĆ|APPROVE:/i.test(text);
+}
+
 function requireSocietyAccount_() {
   const expected = (PropertiesService.getScriptProperties().getProperty("SOCIETY_ACCOUNT_EMAIL") || "").trim().toLowerCase();
   const actual = Session.getEffectiveUser().getEmail().trim().toLowerCase();
-  if (!expected || !actual || expected !== actual) {
+  if (expected !== "agh.quant.finance@gmail.com" || !actual || expected !== actual) {
     throw new Error("Set SOCIETY_ACCOUNT_EMAIL to the verified official account and authorize/run under that same account. Nothing has been created.");
   }
   return expected;
@@ -116,7 +152,7 @@ function assertPrivateOwnedFile_(file, expectedAccount) {
   }
 }
 
-function inspectMembershipDraft() {
+function inspectMembershipDraft(logReport) {
   const expectedAccount = requireSocietyAccount_();
   const properties = PropertiesService.getScriptProperties();
   const formId = properties.getProperty("MEMBERSHIP_FORM_ID");
@@ -128,29 +164,52 @@ function inspectMembershipDraft() {
   assertPrivateOwnedFile_(DriveApp.getFileById(formId), expectedAccount);
   assertPrivateOwnedFile_(DriveApp.getFileById(sheetId), expectedAccount);
   const questionTypes = [FormApp.ItemType.TEXT, FormApp.ItemType.PARAGRAPH_TEXT, FormApp.ItemType.MULTIPLE_CHOICE];
-  const questions = form.getItems().filter(function (item) { return questionTypes.indexOf(item.getType()) >= 0; });
+  const items = form.getItems();
+  const questions = items.filter(function (item) { return questionTypes.indexOf(item.getType()) >= 0; });
+  const expectedTypes = [FormApp.ItemType.TEXT, FormApp.ItemType.TEXT, FormApp.ItemType.TEXT,
+    FormApp.ItemType.MULTIPLE_CHOICE, FormApp.ItemType.PARAGRAPH_TEXT,
+    FormApp.ItemType.TEXT, FormApp.ItemType.MULTIPLE_CHOICE];
+  const expectedRequired = [true, true, true, true, true, false, true];
   const questionSettings = questions.map(function (item) {
     const question = item.getType() === FormApp.ItemType.TEXT ? item.asTextItem()
       : item.getType() === FormApp.ItemType.PARAGRAPH_TEXT ? item.asParagraphTextItem() : item.asMultipleChoiceItem();
     return { title: item.getTitle(), required: question.isRequired() };
   });
   const published = form.supportsAdvancedResponderPermissions() ? form.isPublished() : null;
-  if (form.isAcceptingResponses() || published === true || form.isPublishingSummary()
-    || form.collectsEmail() || form.isQuiz() || form.getDestinationId() !== sheetId
-    || questions.length !== 7 || questionSettings.filter(function (item) { return item.required; }).length !== 6
-    || questionSettings[5].required) {
+  if (form.isAcceptingResponses() || published !== false || form.isPublishingSummary()
+    || form.collectsEmail() || form.isQuiz() || form.hasLimitOneResponsePerUser()
+    || form.getDestinationType() !== FormApp.DestinationType.SPREADSHEET || form.getDestinationId() !== sheetId
+    || items.length !== 8 || items.filter(function (item) { return item.getType() === FormApp.ItemType.SECTION_HEADER; }).length !== 1
+    || questions.length !== 7 || questions.some(function (item, index) { return item.getType() !== expectedTypes[index]; })
+    || questionSettings.some(function (item, index) { return item.required !== expectedRequired[index]; })) {
     throw new Error("Draft configuration differs from the closed seven-question application. Review settings before Board approval.");
   }
+  const trackChoices = questions[3].asMultipleChoiceItem().getChoices().map(function (choice) { return choice.getValue(); });
+  const projectChoices = questions[6].asMultipleChoiceItem().getChoices().map(function (choice) { return choice.getValue(); });
+  if (JSON.stringify(trackChoices) !== JSON.stringify(["Quant Research", "Quant Development", "Both / Obie", "Not sure yet / Jeszcze nie wiem"])
+    || JSON.stringify(projectChoices) !== JSON.stringify(["Yes / Tak", "Maybe, I'd like to learn more / Być może, chcę dowiedzieć się więcej", "Not at the moment / Na razie nie"])) {
+    throw new Error("Track or project-interest choices changed. Preserve the approved seven questions and review manually.");
+  }
+  const privacyText = items.filter(function (item) { return item.getType() === FormApp.ItemType.SECTION_HEADER; })[0]
+    .asSectionHeaderItem().getHelpText();
   const report = {
     owner: expectedAccount,
     published: published,
     acceptingResponses: form.isAcceptingResponses(),
     responseSummaryVisible: form.isPublishingSummary(),
+    title: form.getTitle(),
+    collectsGoogleEmail: form.collectsEmail(),
+    oneResponsePerUser: form.hasLimitOneResponsePerUser(),
+    quiz: form.isQuiz(),
+    trackChoices: trackChoices,
+    privacyContainsPlaceholders: hasPrivacyPlaceholders_(privacyText),
+    manualReviewRequired: ["Responder audience / signed-out access", "Email and optional URL validation", "Privacy legal approval", "Board sharing panels and any account triggers"],
     questions: questionSettings,
     editorUrl: form.getEditUrl(),
     respondentUrl: form.getPublishedUrl(), // A real URL, but not publicly accessible until approved/published.
     responseSpreadsheetUrl: SpreadsheetApp.openById(sheetId).getUrl(),
   };
-  console.log(JSON.stringify(report, null, 2));
+  // Account-level execution logs are private; never commit this report or its internal URLs.
+  if (logReport !== false) console.log(JSON.stringify(report, null, 2));
   return report;
 }

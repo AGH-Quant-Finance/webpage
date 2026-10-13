@@ -15,14 +15,21 @@ const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.Modu
   .replaceAll('"../recruitmentConfig"', JSON.stringify(new URL("../src/recruitmentConfig.ts", import.meta.url).href));
 const { Recruitment } = await import(`data:text/javascript;base64,${Buffer.from(compiled).toString("base64")}`);
 
-test("the delivered configuration stays closed without an application URL", () => {
+test("the supplied respondent URL is prepared but cannot expose an application while closed", () => {
   assert.equal(recruitmentConfig.state, "closed");
-  assert.equal(recruitmentConfig.applicationUrl, null);
+  assert.equal(recruitmentConfig.applicationUrl, "https://docs.google.com/forms/d/e/1FAIpQLSej9QB3LeBTa2dCFedgb-AirSSzWYmJh1WDehHt5PF9sTYo3w/viewform");
   assert.equal(getApplicationUrl(recruitmentConfig), null);
+  assert.equal(getApplicationUrl({ ...recruitmentConfig, state: "open" }), recruitmentConfig.applicationUrl);
+  for (const language of ["en", "pl"]) {
+    const html = renderToStaticMarkup(createElement(Recruitment, { copy: siteCopy[language].recruitment }));
+    assert.ok(!html.includes(recruitmentConfig.applicationUrl));
+    assert.ok(html.includes(siteCopy[language].recruitment.previewAction));
+    assert.ok(!html.includes(siteCopy[language].recruitment.openNotice));
+  }
 });
 
 test("closed, missing, invalid and editor URLs cannot expose an Apply link", () => {
-  const invalid = [null, "", "not a URL", "javascript:alert(1)", "http://forms.gle/test", "https://example.com/form", "https://docs.google.com/forms/d/test/edit", "https://docs.google.com.evil.test/forms/d/test/viewform", "https://user:password@forms.gle/test", "https://forms.gle/", "https://forms.gle:8443/test"];
+  const invalid = [null, "", "not a URL", "javascript:alert(1)", "http://forms.gle/test", "https://example.com/form", "https://docs.google.com/forms/d/test/edit", "https://docs.google.com/spreadsheets/d/test/edit", "https://docs.google.com.evil.test/forms/d/test/viewform", "https://user:password@forms.gle/test", "https://forms.gle/", "https://forms.gle:8443/test"];
   for (const applicationUrl of invalid) assert.equal(getApplicationUrl({ state: "open", applicationUrl }), null);
   assert.equal(getApplicationUrl({ state: "closed", applicationUrl: "https://forms.gle/test" }), null);
 });
