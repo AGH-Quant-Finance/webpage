@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Community } from "./components/Community";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -8,6 +8,9 @@ import { Recruitment } from "./components/Recruitment";
 import { ResearchCycle } from "./components/ResearchCycle";
 import { siteCopy, type Language } from "./content";
 import { useReveal } from "./hooks/useReveal";
+
+const ProjectsPage = lazy(() => import("./components/ProjectsPage"));
+const isProjectsPage = /^\/projects\/?$/.test(window.location.pathname);
 
 const PREFERENCES_KEY = "agh-qf:preferences:v1";
 
@@ -34,23 +37,46 @@ export default function App() {
     }
   }, [language]);
 
+  useEffect(() => {
+    // React mounts after a native cross-page link; resolve its fragment now.
+    if (isProjectsPage || !window.location.hash) return;
+    let id: string;
+    try {
+      id = decodeURIComponent(window.location.hash.slice(1));
+    } catch {
+      return;
+    }
+    const target = document.getElementById(id);
+    target?.focus({ preventScroll: true });
+    target?.scrollIntoView({ behavior: "instant" });
+  }, []);
+
   return (
     <div className="site-frame">
       <a className="skip-link" href="#main-content">{copy.hero.skipLink}</a>
       <Header
         copy={copy.header}
+        isProjectsPage={isProjectsPage}
         language={language}
         languageLabel={copy.languageLabel}
         onToggleLanguage={() => setLanguage((current) => current === "pl" ? "en" : "pl")}
       />
       <main id="main-content" tabIndex={-1}>
-        <Hero copy={copy} />
-        <ResearchDevelopment copy={copy.disciplines} />
-        <ResearchCycle copy={copy.cycle} />
-        <Community copy={copy.community} />
-        <Recruitment copy={copy.recruitment} />
+        {isProjectsPage ? (
+          <Suspense fallback={<p className="projects-loading shell" role="status">{language === "en" ? "Loading projects…" : "Wczytywanie projektów…"}</p>}>
+            <ProjectsPage language={language} />
+          </Suspense>
+        ) : (
+          <>
+            <Hero copy={copy} />
+            <ResearchDevelopment copy={copy.disciplines} />
+            <ResearchCycle copy={copy.cycle} />
+            <Community copy={copy.community} />
+            <Recruitment copy={copy.recruitment} />
+          </>
+        )}
       </main>
-      <Footer copy={copy.footer} navigation={copy.header} />
+      <Footer isProjectsPage={isProjectsPage} copy={copy.footer} navigation={copy.header} />
     </div>
   );
 }

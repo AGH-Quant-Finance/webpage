@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import type { SiteCopy } from "../content";
+import { getApplicationUrl, recruitmentConfig, type RecruitmentConfig } from "../recruitmentConfig";
 
 type RecruitmentProps = {
   copy: SiteCopy["recruitment"];
+  config?: RecruitmentConfig;
 };
 
-export function Recruitment({ copy }: RecruitmentProps) {
+export function Recruitment({ copy, config = recruitmentConfig }: RecruitmentProps) {
+  const applicationUrl = getApplicationUrl(config);
   const [sheetOpen, setSheetOpen] = useState(false);
   const sheetRef = useRef<HTMLElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -65,7 +68,11 @@ export function Recruitment({ copy }: RecruitmentProps) {
             {copy.description.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
           </div>
           <p className="recruitment__supporting-note">{copy.supportingNote}</p>
-          <button
+          {applicationUrl ? (
+            <a className="primary-button pressable" href={applicationUrl} target="_blank" rel="noopener noreferrer" aria-describedby="application-external-notice">
+              {copy.applyAction}<span aria-hidden="true">↗</span>
+            </a>
+          ) : <button
             className="primary-button pressable"
             type="button"
             ref={triggerRef}
@@ -74,11 +81,13 @@ export function Recruitment({ copy }: RecruitmentProps) {
             onClick={() => setSheetOpen(true)}
           >
             {copy.previewAction}<span aria-hidden="true">↗</span>
-          </button>
-          <span className="form-status"><i aria-hidden="true" />{copy.formLabel}</span>
+          </button>}
+          {applicationUrl && <span className="visually-hidden" id="application-external-notice">{copy.externalNotice}</span>}
+          <span className="form-status"><i aria-hidden="true" />{applicationUrl ? copy.openNotice : copy.formLabel}</span>
         </div>
       </div>
 
+      {!applicationUrl && <>
       <button
         className="sheet-scrim"
         type="button"
@@ -123,6 +132,7 @@ export function Recruitment({ copy }: RecruitmentProps) {
           </section>
         </div>
       </aside>
+      </>}
     </section>
   );
 }

@@ -27,6 +27,7 @@ export type SiteCopy = {
   header: {
     navigationLabel: string;
     paths: string;
+    projects: string;
     approach: string;
     community: string;
     recruitment: string;
@@ -76,6 +77,9 @@ export type SiteCopy = {
     supportingNote: string;
     formLabel: string;
     previewAction: string;
+    applyAction: string;
+    openNotice: string;
+    externalNotice: string;
     closePreview: string;
     sheetEyebrow: string;
     sheetTitle: string;
@@ -101,6 +105,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
     header: {
       navigationLabel: "Główna nawigacja",
       paths: "Ścieżki",
+      projects: "Projekty",
       approach: "Podejście",
       community: "Społeczność",
       recruitment: "Rekrutacja",
@@ -193,6 +198,9 @@ export const siteCopy: Record<Language, SiteCopy> = {
       supportingNote: "Wymagania techniczne poszczególnych projektów badawczych i inżynieryjnych mogą się różnić.",
       formLabel: "Formularz zostanie opublikowany po formalnym uruchomieniu naboru.",
       previewAction: "Jak dołączyć",
+      applyAction: "Dołącz do koła",
+      openNotice: "Nabór jest otwarty. Zgłoszenie dotyczy członkostwa w kole, nie konkretnego projektu.",
+      externalNotice: "Formularz Google otworzy się w nowej karcie.",
       closePreview: "Zamknij",
       sheetEyebrow: "Jak dołączyć",
       sheetTitle: "Na początek krótkie zgłoszenie.",
@@ -207,7 +215,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       ],
       membershipTitle: "Członkostwo w kole",
       membershipDescription: "Dla studentów zainteresowanych finansami ilościowymi, matematyką, programowaniem lub pokrewnymi dziedzinami. Doświadczenie w finansach nie jest wymagane.",
-      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Samo dołączenie do serwera Discord nie oznacza członkostwa.",
+      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Wysłanie formularza lub dołączenie do Discorda nie oznacza automatycznego przyjęcia.",
       projectTitle: "Udział w projektach",
       projectDescription: "Liderzy poszczególnych projektów badawczych i inżynieryjnych mogą określać wymagania techniczne, nakład czasu oraz zasady wyboru uczestników.",
     },
@@ -223,6 +231,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
     header: {
       navigationLabel: "Primary navigation",
       paths: "Paths",
+      projects: "Projects",
       approach: "Approach",
       community: "Community",
       recruitment: "Recruitment",
@@ -315,6 +324,9 @@ export const siteCopy: Record<Language, SiteCopy> = {
       supportingNote: "Technical expectations for individual research and engineering projects may vary.",
       formLabel: "The form will be published when recruitment formally opens.",
       previewAction: "How to Join",
+      applyAction: "Apply to Join",
+      openNotice: "Applications are open for society membership, independently of individual projects.",
+      externalNotice: "The Google Form opens in a new tab.",
       closePreview: "Close",
       sheetEyebrow: "How to Join",
       sheetTitle: "Joining starts with a short application.",
@@ -329,7 +341,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       ],
       membershipTitle: "Society membership",
       membershipDescription: "For students interested in quantitative finance, mathematics, programming or related fields. Prior finance experience is not required.",
-      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Joining the Discord server alone does not grant membership.",
+      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Submitting the form or joining Discord does not automatically grant membership.",
       projectTitle: "Project participation",
       projectDescription: "Leaders of individual research and engineering projects may set technical prerequisites, time commitments and selection processes.",
     },
