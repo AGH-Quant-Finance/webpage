@@ -1,6 +1,14 @@
 # Finalize the existing society membership application
 
-## Current status and verification
+## Current handoff status — 14 October 2026
+
+The final documentation check observed the existing form as **Published**, **Accepting responses enabled**, with **Anyone with the link** as responders. A signed-out request returned the intended respondent page with HTTP 200. However, the visible privacy section still contains **REVIEW DRAFT / PROJEKT DO PRZEGLĄDU** and unresolved review fields. Final legal/institutional approval has not been verified; publication does not establish it. The website remains `state: "closed"` and is not described as fully operational recruitment.
+
+The response-sheet sharing panel remains **Restricted**, society owner only. **View results summary is off**; Google-email collection and the one-response sign-in requirement are off. No application was submitted and no Google settings were changed in this handoff. The responsible Board should review already-enabled collection while privacy approval remains pending.
+
+The updater and `inspectMembershipDraft` intentionally reject a published or accepting form. For an approved privacy update, the owner must disable responses and unpublish the **existing** form before using the saved-ID procedure below. Never clear IDs or rerun the creator. [Deployment and maintenance handoff](../deployment-handoff.md).
+
+## Earlier verification history
 
 The society has already created its form and linked response spreadsheet. **Do not create another form, rerun the creator or clear the existing Script properties.** Internal editor/spreadsheet links and IDs, access lists, execution reports and applicant records belong outside this public repository.
 
