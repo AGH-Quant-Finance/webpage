@@ -1,47 +1,53 @@
-# Membership application privacy notice — final Board draft
+# Membership privacy notice — Board and institutional review draft
 
-**Not approved for publication or collection of responses.** Replace every bracketed field and obtain approval of both languages before inserting the final notice into the form. An existing Google account and a generated respondent URL do not establish a controller, legal basis or institutional authorization. This is an information notice, not a mandatory consent checkbox.
+**REVIEW DRAFT — not approved for publication or response collection.** This text incorporates the society's proposal. Controller status and legal basis require AGH confirmation. The 90-day periods are proposed Board policy, not statutory GDPR deadlines. Resolve the review items, approve both languages and remove review markers before publication. No mandatory consent checkbox is proposed.
 
-## English respondent notice
+## English review notice
 
-We use your name, email, field and year of study, preferred track and answers about your interests to review your Quant Finance AGH membership application and contact you. A GitHub or LinkedIn profile is optional.
+**REVIEW DRAFT — do not publish.**
 
-- **Controller:** [APPROVE: full legal identity, address and contact details]. For privacy requests contact [APPROVE: privacy contact; DPO details if applicable].
-- **Legal basis:** [APPROVE: applicable GDPR Article 6 basis and explanation; legitimate interests if relevant].
-- **Recipients:** only authorized Board members may access applications. Google Forms and Sheets collect and store responses. [APPROVE: Google's role and applicable terms/arrangements, any other recipients, transfers outside the EEA and safeguards or their absence, and how to obtain information about safeguards].
-- **Retention:** [APPROVE: period or criteria for approved, unsuccessful and withdrawn applications, and deletion procedure for Forms, Sheets and any copies].
-- **Your rights:** request access, correction, deletion or restriction through the privacy contact above. Objection and portability apply where provided by the relevant legal basis. [APPROVE: withdrawal information only if relying on consent]. You may complain to [APPROVE: competent supervisory authority and contact/link].
-- **Providing data:** the six required answers allow us to consider your application and contact you; the profile link is voluntary. Without required answers the form cannot be submitted. [APPROVE: whether providing any data is a legal/contractual requirement; do not imply one without grounds].
+**Controller and contact.** Proposed controller: **Koło Naukowe Quant Finance, operating at AGH University of Krakow**. Privacy contact: **agh.quant.finance@gmail.com**. **[CONFIRM WITH AGH: controller status, legal identity, postal address and DPO details if applicable.]** If AGH is the controller, replace these details with university-approved information.
 
-No automated scoring or acceptance is used; membership decisions are made by the Board.
+**Purpose and data.** Your name, email, field/year of study, track preference and answers about your interests support reviewing applications, contacting applicants, admission decisions and necessary membership records. A GitHub or LinkedIn profile is optional. Project participation is separate from membership.
 
-[APPROVE: notice version and date].
+**Proposed basis.** Article 6(1)(f) GDPR: legitimate interests in voluntary membership recruitment and administration, conditional on independent-controller confirmation and a documented legitimate-interest, necessity and balancing assessment. If AGH is the controller, its DPO must confirm the appropriate basis.
 
-## Polska informacja dla osób zgłaszających się
+**Recipients.** Access is restricted to authorized Board members. Google Forms collects applications; Google Sheets stores responses. **[CONFIRM: Google's role/terms, other recipients, international transfers/safeguards and how to obtain safeguard information.]** Editor and response-file sharing remains restricted.
 
-Imię i nazwisko, e-mail, kierunek i rok studiów, preferowana ścieżka oraz odpowiedzi o zainteresowaniach służą do rozpatrzenia zgłoszenia do Quant Finance AGH i kontaktu z Tobą. Link do profilu GitHub lub LinkedIn jest opcjonalny.
+**Proposed retention.** Delete unsuccessful applications within **90 days of the final admission decision**. For successful applicants, transfer only necessary information to the membership register and delete original responses within **90 days of admission**. Keep minimum register information during membership and delete it within **90 days after membership ends**, subject to applicable legal/institutional archival requirements. **[APPROVE: precise deletion deadlines/triggers for withdrawn or unresolved applications and any archival exceptions.]** Implement deletion in Forms, Sheets and copies; do not retain data indefinitely.
 
-- **Administrator:** [ZATWIERDZIĆ: pełna nazwa podmiotu, adres i dane kontaktowe]. W sprawach danych skontaktuj się z [ZATWIERDZIĆ: kontakt do realizacji praw; dane IOD, jeśli dotyczy].
-- **Podstawa prawna:** [ZATWIERDZIĆ: właściwa podstawa z art. 6 RODO i jej wyjaśnienie; uzasadniony interes, jeśli dotyczy].
-- **Odbiorcy:** dostęp do zgłoszeń mają wyłącznie upoważnieni członkowie Zarządu. Google Forms i Sheets służą do zbierania i przechowywania odpowiedzi. [ZATWIERDZIĆ: rola Google i właściwe warunki/uzgodnienia, inni odbiorcy, przekazywanie danych poza EOG i zabezpieczenia lub ich brak oraz sposób uzyskania informacji o zabezpieczeniach].
-- **Przechowywanie:** [ZATWIERDZIĆ: okres lub kryteria dla zgłoszeń przyjętych, odrzuconych i wycofanych oraz procedura usuwania danych z Forms, Sheets i kopii].
-- **Twoje prawa:** możesz żądać dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania, korzystając z kontaktu powyżej. Sprzeciw i przenoszenie danych przysługują w przypadkach wynikających z właściwej podstawy prawnej. [ZATWIERDZIĆ: informacja o wycofaniu zgody tylko wtedy, gdy jest podstawą przetwarzania]. Możesz wnieść skargę do [ZATWIERDZIĆ: właściwy organ nadzorczy i kontakt/link].
-- **Podanie danych:** sześć wymaganych odpowiedzi pozwala rozpatrzyć zgłoszenie i skontaktować się z Tobą; link do profilu jest dobrowolny. Bez wymaganych odpowiedzi nie można wysłać formularza. [ZATWIERDZIĆ: czy istnieje obowiązek ustawowy/umowny; nie sugerować go bez podstawy].
+**Your rights.** Contact the address above to request access, correction, deletion or restriction, or object where applicable. Other rights depend on the confirmed basis and GDPR. You may complain to **[CONFIRM: supervisory authority and contact/link]**. Required answers enable consideration and contact; the profile link is voluntary. **[CONFIRM: whether providing data has any legal/contractual requirement.]** No automated scoring or acceptance is used; membership requires Board approval.
 
-Nie stosujemy automatycznej punktacji ani przyjmowania; o członkostwie decyduje Zarząd.
+**[APPROVE: notice version/date and implementation before publication.]**
 
-[ZATWIERDZIĆ: wersja i data informacji].
+## Polska wersja do przeglądu
 
-## Approval requirements — internal, not respondent copy
+**PROJEKT DO PRZEGLĄDU — nie publikować.**
 
-Before launch, the Board must resolve:
+**Administrator i kontakt.** Proponowany administrator: **Koło Naukowe Quant Finance, działające przy Akademii Górniczo-Hutniczej w Krakowie**. Kontakt w sprawach danych: **agh.quant.finance@gmail.com**. **[POTWIERDZIĆ Z AGH: status administratora, tożsamość prawną, adres i dane IOD, jeśli dotyczy.]** Jeśli administratorem jest AGH, należy zastąpić te dane informacjami zatwierdzonymi przez uczelnię.
 
-1. Who legally determines the purposes and means of processing: the society, AGH or another authorized entity. Confirm the legal identity and institutional authority with the appropriate AGH data-protection contact where necessary; the society name and Gmail address alone do not answer this.
-2. The applicable legal basis, required-information explanation, privacy/DPO contact and competent supervisory authority. Do not choose consent merely to add a checkbox or assume legitimate interests without assessment.
-3. Whether this Google account and its Forms/Sheets terms are suitable for the approved controller, including provider roles, agreements, recipients, transfer safeguards and any institutional restrictions.
-4. A proportionate retention period or criteria, who deletes data in each location, and treatment of withdrawn, unsuccessful and accepted applications. Avoid indefinite retention by default.
-5. Authorized Board access, handling of rights requests, the exact bilingual notice, version/date and approval record. Keep named access lists, internal links and account records outside the public repository.
+**Cel i dane.** Imię i nazwisko, e-mail, kierunek/rok studiów, preferowana ścieżka i odpowiedzi o zainteresowaniach służą do rozpatrzenia zgłoszeń, kontaktu z kandydatami, decyzji o przyjęciu i prowadzenia niezbędnej ewidencji członków. Profil GitHub lub LinkedIn jest opcjonalny. Udział w projektach jest odrębny od członkostwa.
 
-Only the completed, approved English and Polish respondent notice belongs in the existing form's privacy section. Placeholder detection in a script is a technical check, **not legal approval**. Keep the form unpublished and closed until every item above is resolved.
+**Proponowana podstawa.** Art. 6 ust. 1 lit. f RODO: prawnie uzasadniony interes w organizacji dobrowolnego naboru i prowadzeniu spraw członkowskich, pod warunkiem potwierdzenia statusu odrębnego administratora oraz udokumentowania oceny interesu, niezbędności i testu równowagi. Jeśli administratorem jest AGH, właściwą podstawę musi potwierdzić IOD uczelni.
 
-Disclosure topics were reviewed against [GDPR Article 13](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679) and the European Commission's [guidance on controllers and processing arrangements](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en). This draft does not establish the controller's identity, legal basis or institutional authorization.
+**Odbiorcy.** Dostęp mają wyłącznie upoważnieni członkowie Zarządu. Google Forms zbiera zgłoszenia, a Google Sheets przechowuje odpowiedzi. **[POTWIERDZIĆ: rolę/warunki Google, innych odbiorców, transfery zagraniczne/zabezpieczenia i sposób uzyskania informacji o zabezpieczeniach.]** Dostęp do edycji i plików z odpowiedziami pozostaje ograniczony.
+
+**Proponowane przechowywanie.** Zgłoszenia osób nieprzyjętych usuwa się w ciągu **90 dni od ostatecznej decyzji o przyjęciu lub odmowie**. Dla osób przyjętych do ewidencji przenosi się tylko niezbędne informacje, a pierwotne odpowiedzi usuwa w ciągu **90 dni od przyjęcia**. Minimalne dane ewidencji przechowuje się podczas członkostwa i usuwa w ciągu **90 dni od jego zakończenia**, z zastrzeżeniem właściwych przepisów lub zasad archiwizacji uczelni. **[ZATWIERDZIĆ: terminy i zdarzenia rozpoczynające ich bieg dla zgłoszeń wycofanych/nierozstrzygniętych oraz wyjątki archiwalne.]** Usuwanie należy wdrożyć w Forms, Sheets i kopiach; dane nie mogą być przechowywane bezterminowo.
+
+**Twoje prawa.** Korzystając z kontaktu powyżej, możesz żądać dostępu, sprostowania, usunięcia lub ograniczenia przetwarzania oraz wnieść sprzeciw, jeśli przysługuje. Inne prawa zależą od potwierdzonej podstawy i RODO. Możesz złożyć skargę do **[POTWIERDZIĆ: organ nadzorczy i kontakt/link]**. Wymagane odpowiedzi pozwalają rozpatrzyć zgłoszenie i skontaktować się z Tobą; profil jest dobrowolny. **[POTWIERDZIĆ: czy istnieje ustawowy/umowny obowiązek podania danych.]** Nie stosujemy automatycznej punktacji ani przyjmowania; członkostwo wymaga zatwierdzenia przez Zarząd.
+
+**[ZATWIERDZIĆ: wersję/datę informacji i wdrożenie przed publikacją.]**
+
+## Institutional review and implementation — not respondent copy
+
+The supplied proposal states that the Board manages recruitment, admissions and the Google account. That operating arrangement does not itself settle the controller's legal status.
+
+Before publication:
+
+1. Confirm controller identity/authority and contact/address/DPO details with AGH. If AGH is the controller, follow university guidance and obtain its DPO's confirmation of the basis. Article 6 limits reliance on legitimate interests by public authorities performing their tasks.
+2. If independent society control is confirmed, approve and document the legitimate-interest, necessity and balancing assessment. The proposed basis is not yet established.
+3. Confirm Google arrangements/provider roles, recipients, international transfers/safeguards, applicant rights and supervisory-authority information. The supplied policy ended mid-sentence in its security section; no further provider/security commitments are assumed.
+4. Approve the three proposed 90-day periods, exact deadlines/triggers for withdrawn and unresolved applications and any applicable archival exceptions. Assign a deletion owner and review the relevant decision/admission/end dates. Delete originals from both Forms and Sheets and handle exports/copies; transfer only necessary register data. No automated transfer/deletion process is implemented by this setup task.
+5. Approve exact bilingual wording, version/date, restricted Board access and launch. Keep access lists, internal links, assessments, approval records and applicant data private. Remove all review markers before publication. Do not put this proposed text in `APPROVED_PRIVACY_NOTICE` or label it approved merely because the website is ready.
+
+References: [GDPR Articles 5, 6, 13 and 21](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX%3A32016R0679); [European Commission guidance on controllers and processing arrangements](https://commission.europa.eu/law/law-topic/data-protection/information-business-and-organisations/application-gdpr_en). The controller, basis and retention proposal come from the society's policy; this draft does not certify legal suitability.
