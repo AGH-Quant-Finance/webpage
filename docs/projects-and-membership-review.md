@@ -12,7 +12,7 @@ Branch: `feat/projects-and-membership`, created from `main` at `1e6970f`. This i
 - Page changes use native links. No routing dependency was added; the Projects module loads separately. Explicit PL/EN preferences survive native page navigation and reloads. Fresh visitors start in English.
 - A small initial-fragment effect scrolls/focuses homepage sections after React mounts, so cross-page section links work with keyboard navigation. Existing same-page links retain their behavior.
 
-Hero, Research & Development, Our Approach, Community, footer copy and the existing recruitment heading/description/supporting note were compared against main and remain unchanged. No proposal descriptions were inserted into the homepage. There are no new decorative cards, charts or glass surfaces.
+The hero retains its academic copy and primary Our Approach / Nasze podejście CTA; the redundant How to Join / Jak dołączyć hero link has been removed. The existing paragraph-to-button spacing is retained, and the mobile action area contracts naturally to a single button. Research & Development, Our Approach, Community, footer copy and the existing recruitment heading/description/supporting note remain unchanged. No proposal descriptions were inserted into the homepage. There are no new decorative cards, charts or glass surfaces.
 
 ## Routing and hosting
 
@@ -67,6 +67,17 @@ Projects captures use 375 × 812 or 768/1440/1920 × 1000 browser viewports; scr
 | English | [Projects](screenshots/projects-and-membership/en-projects-375.png) | [Projects](screenshots/projects-and-membership/en-projects-768.png) | [Projects](screenshots/projects-and-membership/en-projects-1440.png) | [Projects](screenshots/projects-and-membership/en-projects-1920.png) |
 | Polish | [Projekty](screenshots/projects-and-membership/pl-projects-375.png) | [Projekty](screenshots/projects-and-membership/pl-projects-768.png) | [Projekty](screenshots/projects-and-membership/pl-projects-1440.png) | [Projekty](screenshots/projects-and-membership/pl-projects-1920.png) |
 
-Homepage comparison captures, including unchanged hero and closed recruitment state: [EN desktop](screenshots/projects-and-membership/en-home-1440.png), [EN mobile](screenshots/projects-and-membership/en-home-375.png), [PL desktop](screenshots/projects-and-membership/pl-home-1440.png), [PL mobile](screenshots/projects-and-membership/pl-home-375.png).
+Earlier homepage comparison captures, before the secondary hero CTA removal: [EN desktop](screenshots/projects-and-membership/en-home-1440.png), [EN mobile](screenshots/projects-and-membership/en-home-375.png), [PL desktop](screenshots/projects-and-membership/pl-home-1440.png), [PL mobile](screenshots/projects-and-membership/pl-home-375.png).
+
+### Single-CTA hero refinement
+
+The hero has one primary action. The distinct navbar Join Us action and Get Involved's existing How to Join interaction remain intact, including the closed recruitment preview and its keyboard behavior. No navigation, branding, recruitment functionality or other section changed.
+
+Lint and build pass. Chromium verification at 1440px and 375px in English and Polish covers the single hero link and its destination, retained navigation hierarchy, mobile menu Escape/focus restoration, recruitment dialog opening/Tab/Escape/focus restoration, paragraph-to-button spacing and absence of horizontal overflow or browser errors. The existing spacing needs no CSS adjustment.
+
+| Language | Desktop · 1440px | Mobile · 375px |
+| --- | --- | --- |
+| English | [Hero](screenshots/projects-and-membership/en-home-hero-1440.png) | [Hero](screenshots/projects-and-membership/en-home-hero-375.png) |
+| Polish | [Hero](screenshots/projects-and-membership/pl-home-hero-1440.png) | [Hero](screenshots/projects-and-membership/pl-home-hero-375.png) |
 
 No merge, form publication or production deployment is included.

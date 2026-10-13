@@ -41,7 +41,6 @@ export type SiteCopy = {
     accent: string;
     lead: string;
     primaryAction: string;
-    secondaryAction: string;
     consoleLabel: string;
     skillsLabel: string;
     signature: string;
@@ -119,7 +118,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
       accent: "przez badania i inżynierię.",
       lead: "Studenckie koło naukowe przy AGH w Krakowie. Łączymy rzetelne badania ilościowe, odtwarzalne eksperymenty i budowę wydajnych systemów finansowych.",
       primaryAction: "Nasze podejście",
-      secondaryAction: "Jak dołączyć",
       consoleLabel: "Dwie ścieżki. Wspólny kierunek.",
       skillsLabel: "Obszary pracy",
       signature: "Ludzie. Modele. Rynki.",
@@ -245,7 +243,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
       accent: "through research and engineering.",
       lead: "A student-led scientific society at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
       primaryAction: "Our Approach",
-      secondaryAction: "How to Join",
       consoleLabel: "Two paths. A shared direction.",
       skillsLabel: "Areas of work",
       signature: "People. Models. Markets.",
