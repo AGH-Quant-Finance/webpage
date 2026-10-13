@@ -184,15 +184,27 @@ test("updater refuses settings and question drift before making presentation cha
 test("approved notice updates one existing privacy section and rejects placeholders", () => {
   const mock = googleDouble();
   mock.context.createMembershipApplication();
-  mock.values.set("APPROVED_PRIVACY_NOTICE", "[APPROVE: controller]");
   const initialEvents = mock.events.length;
-  assert.throws(() => mock.context.updateMembershipApplication(), /draft markers/);
-  assert.equal(mock.events.length, initialEvents);
+  for (const draft of ["[APPROVE: controller]", "REVIEW DRAFT", "PROJEKT DO PRZEGLĄDU"]) {
+    mock.values.set("APPROVED_PRIVACY_NOTICE", draft);
+    assert.throws(() => mock.context.updateMembershipApplication(), /draft markers/);
+    assert.equal(mock.events.length, initialEvents);
+  }
   const notice = "Approved bilingual notice fixture / Zatwierdzona klauzula testowa";
   mock.values.set("APPROVED_PRIVACY_NOTICE", notice);
-  const report = mock.context.updateMembershipApplication();
-  assert.equal(mock.items[7].helptext, notice);
-  assert.equal(report.privacyContainsPlaceholders, false); // Not a certification of legal approval.
-  assert.equal(mock.items.length, 8);
-  assert.equal(report.published, false);
+  const questions = mock.items.slice(0, 7).map((item) => ({ ...item }));
+  const ids = [mock.values.get("MEMBERSHIP_FORM_ID"), mock.values.get("MEMBERSHIP_SHEET_ID")];
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const report = mock.context.updateMembershipApplication();
+    assert.equal(mock.items[7].helptext, notice);
+    assert.equal(report.privacyContainsPlaceholders, false); // Not a certification of legal approval.
+    assert.equal(mock.items.length, 8);
+    assert.equal(report.published, false);
+    assert.equal(report.acceptingResponses, false);
+    assert.equal(report.owner, "agh.quant.finance@gmail.com");
+    assert.deepEqual(mock.items.slice(0, 7), questions);
+    assert.deepEqual([mock.values.get("MEMBERSHIP_FORM_ID"), mock.values.get("MEMBERSHIP_SHEET_ID")], ids);
+    assert.equal(mock.settings.destination, "sheet-id");
+  }
+  assert.ok(mock.events.slice(initialEvents).every(([event]) => ["Title", "Description"].includes(event)));
 });

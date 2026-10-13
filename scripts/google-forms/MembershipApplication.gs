@@ -128,7 +128,7 @@ function updateMembershipApplication() {
 }
 
 function hasPrivacyPlaceholders_(text) {
-  return !text || /\[|\]|\bDRAFT\b|PROJEKT\s*[—:-]|BOARD TO APPROVE|DO ZATWIERDZENIA|ZATWIERDZIĆ|APPROVE:/i.test(text);
+  return !text || /\[|\]|\bDRAFT\b|PROJEKT(?:\s*[—:-]|\s+DO\s+PRZEGLĄDU\b)|BOARD TO APPROVE|DO ZATWIERDZENIA|ZATWIERDZIĆ|APPROVE:/i.test(text);
 }
 
 function requireSocietyAccount_() {
