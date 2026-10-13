@@ -24,6 +24,8 @@ The final handoff proposal in [the bilingual institutional-review draft](privacy
 
 The earlier live read-only **inspectMembershipDraft** run verified the form remains unpublished/closed with hidden summaries and draft privacy markers. The existing setup project's Triggers page showed **0 triggers**; unrelated account automations are not certified by that project-level check.
 
+On 14 October 2026, the final merge review reran **inspectMembershipDraft** successfully in the official account. It again reported `published: false`, `acceptingResponses: false`, hidden summaries, seven questions with six required/one optional, the existing response destination and restricted society-owned files. The editor showed zero responses and required publication before collection. Privacy review wording remains in the form. The society supplied controller identity/operating responsibilities, but explicitly left notice, basis and processing approval pending. The [shorter bilingual notice](privacy-notice-draft.md) and [proposed legitimate-interest assessment](legitimate-interest-assessment.md) are the current review documents; they have not been represented as approved or installed as final notice. Website merge/deployment handoff may proceed with recruitment closed.
+
 
 ## Reapply presentation or insert an approved notice, without creating anything
 

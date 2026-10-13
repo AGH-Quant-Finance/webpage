@@ -1,6 +1,6 @@
 # Quant Finance AGH — deployment handoff
 
-For the Quant Dev Lead: `feat/projects-and-membership`, draft PR #3. Design/content are approved. Release the reviewed commit through the normal merge/deployment process. Recruitment remains **closed** while privacy approvals are pending; the frontend is complete independently of them.
+For the Quant Dev Lead: the reviewed website is delivered through PR #3 into `main`. Design/content are approved. Deploy the resulting main commit through the normal release process. Recruitment remains **closed** while privacy approvals are pending; these do not block the website merge or deployment handoff.
 
 ## Build and deployment
 
@@ -40,7 +40,7 @@ No frontend environment variables, backend/database or Google API credentials ar
 
 ## Privacy update and recruitment
 
-Before launch, approve the [bilingual notice](membership/privacy-notice-draft.md), actual controller/basis and legitimate-interest assessment, retention rules, separate register policy, Google service/transfer arrangements and Board access. The notice remains a **proposal** and supersedes the earlier Google draft; resolve all review markers before publication.
+Before launch, approve the [concise bilingual notice](membership/privacy-notice-draft.md), actual controller/basis and [proposed legitimate-interest assessment](membership/legitimate-interest-assessment.md), retention rules, separate register policy, Google service/transfer arrangements and Board access. The society has supplied its controller identity and recruitment responsibilities; legal/institutional clearance is still pending. The notice remains a **proposal** and supersedes the earlier Google draft; complete provider information and remove review wording before publication.
 
 Under the society account in the **existing** script project, preserve all saved IDs. Set private `APPROVED_PRIVACY_NOTICE` to the exact approved bilingual text, run `updateMembershipApplication`, then `inspectMembershipDraft`. Repeated updates replace one existing privacy section and preserve seven questions, validations, choices, six required/one optional settings, destination, ownership and unpublished/closed state. Never run the creator or clear IDs. [Exact procedure](membership/google-forms-setup.md).
 
@@ -72,4 +72,4 @@ python3 -m http.server 5190 --bind 127.0.0.1 --directory dist
 - Closed: no active application link or acceptance claim. After approved launch: verified secure respondent link, bilingual Apply to Join and no obsolete preview.
 - Public project links, canonical-domain redirects, TLS and HTML/asset caching.
 
-Pending: production host/domain/DNS/release access; Board/institutional controller/basis/notice/Google-arrangement approval; register/unresolved-application retention and actual deletion procedure; live signed-out form and production-host checks. [Verification and screenshots](projects-and-membership-review.md). No merge, deployment, duplicate form, publication or response collection is performed by this handoff.
+Pending: production host/domain/DNS/release access; Board/institutional controller/basis/notice/Google-arrangement approval; register/unresolved-application retention and actual deletion procedure; live signed-out form and production-host checks. [Verification and screenshots](projects-and-membership-review.md). No duplicate form, publication or response collection is performed by this handoff. Production deployment belongs to the Quant Dev Lead. At merge review, the repository had no GitHub Actions workflows, GitHub Pages configuration or recorded GitHub deployments; separately connected external hosting was not confirmed.
