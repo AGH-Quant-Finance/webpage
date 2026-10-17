@@ -15,6 +15,7 @@ Vite wyświetli lokalny adres aplikacji, domyślnie `http://localhost:5173`.
 
 ```bash
 npm run lint
+npm test
 npm run build
 ```
 
@@ -64,10 +65,12 @@ Formularz i arkusz już istnieją na koncie koła. W przeglądarce konta koła z
 Dodatkowe testy stanu rekrutacji i zabezpieczeń skryptu (zalecany Node 22.12+ i npm 10.x dla całego projektu; bez nowych zależności):
 
 ```bash
-node --experimental-strip-types --test tests/*.test.mjs
+npm test
 ```
 
 Testy skryptu używają atrap usług; nie potwierdzają rzeczywistej własności konta ani wykonania w Google.
+
+GitHub Actions uruchamia lint, testy i build dla pull requestów do `main`, z Node 22 i zależnościami z lockfile. Workflow służy do walidacji; nie publikuje strony ani nie zmienia konfiguracji wdrożenia.
 
 ## Przekazanie do wdrożenia
 

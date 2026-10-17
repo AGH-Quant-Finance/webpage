@@ -2,7 +2,7 @@
 
 The Quant Finance AGH website is complete and PR #3 is merged into `main` (verified baseline: `16c679f4049eff6cca90f0a7cbafe56031796feb`). It includes the approved React/TypeScript/Vite design, official branding, responsive glass navigation, EN/PL content, homepage sections and four Exploring initiatives on `/projects`.
 
-Run locally with Node 22.12+ and npm 10.x: `npm ci`, then `npm run dev`. Before release run `npm run lint`, `node --experimental-strip-types --test tests/*.test.mjs`, `npm run build` and `git diff --check`. Installation, lint, all 12 tests and build pass; local production-output checks pass. No public-host deployment test is claimed.
+Run locally with Node 22.12+ and npm 10.x: `npm ci`, then `npm run dev`. Before release run `npm run lint`, `npm test`, `npm run build` and `git diff --check`. Pull requests run these lint/test/build checks in GitHub Actions without deploying. Installation, lint, all 12 tests and build pass; local production-output checks pass. No public-host deployment test is claimed.
 
 Deploy the complete `dist/` at the domain root on a static HTTPS host. Serve `/` from `index.html` and `/projects` or `/projects/` from `projects/index.html`; preserve that visible pathname. Choose hosting/domain, obtain private access, apply provider-issued DNS records, configure TLS/cache/release/rollback, then run the documented public-host smoke tests. No backend or frontend secrets/environment variables are needed.
 
