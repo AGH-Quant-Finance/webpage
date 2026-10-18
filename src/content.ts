@@ -125,7 +125,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       eyebrow: "Dwie uzupełniające się dziedziny",
       title: "Research & Development.",
       research: "Formułuje i weryfikuje hipotezy ilościowe.",
-      development: "Tworzy niezawodne narzędzia eksperymentalne i infrastrukturę rynkową.",
+      development: "Sekcja Development zajmuje się projektowaniem i tworzeniem oprogramowania dla finansów ilościowych. Pracujemy nad systemami transakcyjnymi, symulacjami rynku i wysokowydajnymi obliczeniami, kładąc nacisk na nowoczesny C++, architekturę systemów i praktyczne umiejętności inżynierskie. Chcemy przekładać wiedzę techniczną na praktyczne zastosowania, ucząc się i rozwijając jako programiści.",
       relationship: "Pytania badawcze wyznaczają kierunek prac inżynieryjnych. Narzędzia pozwalają testować hipotezy i odtwarzać wyniki.",
     },
     paths: [
@@ -149,7 +149,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
         code: "QD / 02",
         label: "Development",
         title: "Quant Development",
-        description: "Zamieniaj pomysły w powtarzalne narzędzia: pipeline danych, backtester, symulator egzekucji i testowalny kod.",
+        description: "Zamieniaj złożone wyzwania w wydajne oprogramowanie. Zgłębiaj tematykę wysokowydajnych obliczeń, infrastruktury transakcyjnej i nowoczesnej inżynierii oprogramowania.",
         output: "specyfikacja → system → benchmark",
         skills: [
           { name: "Python", level: "core" },
@@ -234,10 +234,10 @@ export const siteCopy: Record<Language, SiteCopy> = {
       closeMenu: "Close menu",
     },
     hero: {
-      eyebrow: "Scientific society · AGH University of Krakow",
+      eyebrow: "Science club · AGH University of Krakow",
       title: "Advancing quantitative finance",
       accent: "through research and engineering.",
-      lead: "A student-led scientific society at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
+      lead: "A student-led science club at AGH University of Krakow, dedicated to rigorous quantitative research, reproducible experiments, and high-performance financial systems.",
       consoleLabel: "Two paths. A shared direction.",
       skillsLabel: "Areas of work",
       skipLink: "Skip to content",
@@ -248,7 +248,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
       eyebrow: "Two complementary disciplines",
       title: "Research & Development.",
       research: "Develops and tests quantitative hypotheses.",
-      development: "Builds reliable tools for experiments and market infrastructure.",
+      development: "The Development Section focuses on designing and building software solutions for quantitative finance. We work on projects involving trading systems, market simulations, and high-performance computing, with an emphasis on modern C++ development, system architecture, and practical engineering skills. Our goal is to turn technical knowledge into real-world applications while learning and growing as developers.",
       relationship: "Research questions guide engineering. The tools make those questions testable and the results reproducible.",
     },
     paths: [
@@ -272,7 +272,7 @@ export const siteCopy: Record<Language, SiteCopy> = {
         code: "QD / 02",
         label: "Development",
         title: "Quant Development",
-        description: "Turn ideas into repeatable tools: data pipelines, backtesters, execution simulators and testable code.",
+        description: "Turn complex challenges into efficient software. Explore high-performance computing, trading infrastructure, and modern software engineering.",
         output: "specification → system → benchmark",
         skills: [
           { name: "Python", level: "core" },
