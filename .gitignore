@@ -3,6 +3,5 @@ dist/
 *.tsbuildinfo
 .DS_Store
 *.local
-.vercel
 .env*
 .wrangler/
