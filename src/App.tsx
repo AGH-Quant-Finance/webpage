@@ -4,7 +4,6 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { ResearchDevelopment } from "./components/ResearchDevelopment";
-import { Recruitment } from "./components/Recruitment";
 import { ResearchCycle } from "./components/ResearchCycle";
 import { siteCopy, type Language } from "./content";
 import { useReveal } from "./hooks/useReveal";
@@ -72,7 +71,6 @@ export default function App() {
             <ResearchDevelopment copy={copy.disciplines} />
             <ResearchCycle copy={copy.cycle} />
             <Community copy={copy.community} />
-            <Recruitment copy={copy.recruitment} />
           </>
         )}
       </main>
