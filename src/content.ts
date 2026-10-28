@@ -67,27 +67,6 @@ export type SiteCopy = {
     description: string;
     pillars: Array<{ title: string; description: string }>;
   };
-  recruitment: {
-    eyebrow: string;
-    title: string;
-    description: string[];
-    supportingNote: string;
-    formLabel: string;
-    previewAction: string;
-    applyAction: string;
-    openNotice: string;
-    externalNotice: string;
-    closePreview: string;
-    sheetEyebrow: string;
-    sheetTitle: string;
-    sheetDescription: string;
-    items: Array<{ title: string; description: string }>;
-    membershipTitle: string;
-    membershipDescription: string;
-    membershipNotice: string;
-    projectTitle: string;
-    projectDescription: string;
-  };
   footer: {
     description: string;
     location: string;
@@ -182,37 +161,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
         { title: "Dialog z branżą", description: "Chcemy zapraszać praktyków finansów ilościowych do dyskusji i wymiany doświadczeń." },
       ],
     },
-    recruitment: {
-      eyebrow: "Dołącz do nas",
-      title: "Najważniejsza jest ciekawość.",
-      description: [
-        "Nie potrzebujesz rozbudowanego portfolio ani doświadczenia w finansach ilościowych, żeby do nas dołączyć.",
-        "Opowiedz nam krótko o sobie, swoich zainteresowaniach i o tym, co chcesz zgłębiać.",
-      ],
-      supportingNote: "Wymagania techniczne poszczególnych projektów badawczych i inżynieryjnych mogą się różnić.",
-      formLabel: "Formularz zostanie opublikowany po formalnym uruchomieniu naboru.",
-      previewAction: "Jak dołączyć",
-      applyAction: "Dołącz do koła",
-      openNotice: "Nabór jest otwarty. Zgłoszenie dotyczy członkostwa w kole, nie konkretnego projektu.",
-      externalNotice: "Formularz Google otworzy się w nowej karcie.",
-      closePreview: "Zamknij",
-      sheetEyebrow: "Jak dołączyć",
-      sheetTitle: "Na początek krótkie zgłoszenie.",
-      sheetDescription: "Po otwarciu naboru krótki formularz pozwoli nam poznać Ciebie i Twoje zainteresowania. Poniżej opisujemy planowane informacje — to jeszcze nie jest aktywny formularz.",
-      items: [
-        { title: "Dane kontaktowe", description: "Imię, nazwisko i adres e-mail." },
-        { title: "Studia", description: "Kierunek i rok studiów." },
-        { title: "Preferowana ścieżka", description: "Quant Research, Quant Development lub obie." },
-        { title: "Zainteresowania", description: "Krótka odpowiedź o Twoich zainteresowaniach naukowych lub technicznych." },
-        { title: "Link do profilu (opcjonalnie)", description: "GitHub lub LinkedIn, jeśli chcesz go udostępnić." },
-        { title: "Udział w projekcie", description: "Czy interesuje Cię dołączenie do projektu." },
-      ],
-      membershipTitle: "Członkostwo w kole",
-      membershipDescription: "Dla studentów zainteresowanych finansami ilościowymi, matematyką, programowaniem lub pokrewnymi dziedzinami. Doświadczenie w finansach nie jest wymagane.",
-      membershipNotice: "Formalne członkostwo wymaga zatwierdzenia przez Zarząd zgodnie z regulaminem koła. Wysłanie formularza lub dołączenie do Discorda nie oznacza automatycznego przyjęcia.",
-      projectTitle: "Udział w projektach",
-      projectDescription: "Liderzy poszczególnych projektów badawczych i inżynieryjnych mogą określać wymagania techniczne, nakład czasu oraz zasady wyboru uczestników.",
-    },
     footer: {
       description: "Studencka inicjatywa badawczo-projektowa na AGH w Krakowie.",
       location: "AGH · Kraków",
@@ -304,37 +252,6 @@ export const siteCopy: Record<Language, SiteCopy> = {
         { title: "Peer review", description: "We examine each other’s assumptions, code and conclusions. Discussion helps identify limitations." },
         { title: "Industry dialogue", description: "We aim to engage quantitative finance practitioners in discussion and the exchange of experience." },
       ],
-    },
-    recruitment: {
-      eyebrow: "Get involved",
-      title: "Curiosity comes first.",
-      description: [
-        "You don't need an extensive portfolio or previous experience in quantitative finance to join us.",
-        "Tell us a little about yourself, your interests, and what you'd like to explore.",
-      ],
-      supportingNote: "Technical expectations for individual research and engineering projects may vary.",
-      formLabel: "The form will be published when recruitment formally opens.",
-      previewAction: "How to Join",
-      applyAction: "Apply to Join",
-      openNotice: "Applications are open for society membership, independently of individual projects.",
-      externalNotice: "The Google Form opens in a new tab.",
-      closePreview: "Close",
-      sheetEyebrow: "How to Join",
-      sheetTitle: "Joining starts with a short application.",
-      sheetDescription: "When recruitment opens, a short application will help us learn about you and your interests. The information below is a preview, not an active form.",
-      items: [
-        { title: "Contact details", description: "Your name and email address." },
-        { title: "Studies", description: "Your field and year of study." },
-        { title: "Preferred track", description: "Quant Research, Quant Development, or both." },
-        { title: "Interests", description: "A short answer about your academic or technical interests." },
-        { title: "Profile link (optional)", description: "GitHub or LinkedIn, if you'd like to share one." },
-        { title: "Project participation", description: "Whether you're interested in joining a project." },
-      ],
-      membershipTitle: "Society membership",
-      membershipDescription: "For students interested in quantitative finance, mathematics, programming or related fields. Prior finance experience is not required.",
-      membershipNotice: "Formal membership requires Board approval under the society's official regulations. Submitting the form or joining Discord does not automatically grant membership.",
-      projectTitle: "Project participation",
-      projectDescription: "Leaders of individual research and engineering projects may set technical prerequisites, time commitments and selection processes.",
     },
     footer: {
       description: "A student research and project initiative at AGH University in Kraków.",

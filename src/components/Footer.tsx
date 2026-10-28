@@ -1,5 +1,5 @@
 import type { SiteCopy } from "../content";
-import { navigationItems, recruitmentHref } from "../navigation";
+import { navigationItems, applicationUrl } from "../navigation";
 
 type FooterProps = {
   copy: SiteCopy["footer"];
@@ -16,7 +16,7 @@ export function Footer({ copy, navigation, isProjectsPage }: FooterProps) {
         {navigationItems(isProjectsPage).map((item) => (
           <a key={item.key} href={item.href} aria-current={isProjectsPage && item.key === "projects" ? "page" : undefined}>{navigation[item.key]}</a>
         ))}
-        <a className="footer__join" href={recruitmentHref(isProjectsPage)}>{navigation.joinAction}</a>
+        <a className="footer__join" href={applicationUrl} target="_blank" rel="noopener noreferrer">{navigation.joinAction}</a>
       </div>
       <div className="footer__meta"><span>{copy.location}</span><span className="footer-status"><i aria-hidden="true" />{copy.status}</span></div>
     </footer>

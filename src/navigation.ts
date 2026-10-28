@@ -8,6 +8,4 @@ export function navigationItems(isProjectsPage: boolean) {
   ] as const;
 }
 
-export function recruitmentHref(isProjectsPage: boolean) {
-  return isProjectsPage ? "/#recruitment" : "#recruitment";
-}
+export const applicationUrl = "https://forms.gle/9hbMR9nEBuQKZyLo7";

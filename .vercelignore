@@ -1,7 +1,0 @@
-.agents/
-.claude/
-plans/
-dist/
-node_modules/
-.env*
-*.local

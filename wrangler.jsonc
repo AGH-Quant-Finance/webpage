@@ -1,0 +1,8 @@
+{
+  // Static-assets-only Worker; "name" must match the Worker name in the Cloudflare dashboard.
+  "name": "agh-quant-finance",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist"
+  }
+}
