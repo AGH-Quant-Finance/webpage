@@ -44,12 +44,12 @@ Vite prints its local development URL, normally `http://localhost:5173`. Stop wi
 
 ```bash
 npm run lint
-node --experimental-strip-types --test tests/*.test.mjs
+npm test
 npm run build
 git diff --check
 ```
 
-There is no `npm test` script; use the Node command above. All 12 tests pass at the verified baseline. Apps Script tests use local doubles; they do not prove current Google authorization, privacy approval or collection behavior.
+`npm test` runs the existing Node regression suite. All 12 tests pass at the verified baseline. Apps Script tests use local doubles; they do not prove current Google authorization, privacy approval or collection behavior.
 
 `npm run build` runs TypeScript checks, Vite and the Projects-entry copy script. Output is **`dist/`**, including `index.html`, `projects/index.html`, hashed `assets/*`, `brand/*` and favicons. Deploy all of it together; do not publish source or `node_modules`.
 
@@ -79,7 +79,7 @@ Choose a static host that supports HTTPS, root-domain hosting, directory indexes
 
 An internal rewrite must preserve the visible pathname `/projects` or `/projects/`. **Do not redirect to `/projects/index.html`**: that pathname selects the homepage. A global SPA fallback is unnecessary; configure unknown-route/404 behavior intentionally. Root-relative assets and links require deployment at the domain root. GitHub Pages-style repository subpaths require a separately reviewed base-path/routing change; they are not supported by the present configuration.
 
-Release sequence: identify the reviewed commit, run checks, retain its full artifact and the previous release, publish to the host's staging/release slot if available, run smoke tests, then promote via the host's normal procedure. Record commit, artifact, release time and rollback target privately. No GitHub Actions workflow or Pages configuration is present; external hosting integrations must be confirmed with the repository/hosting owners before assuming push-to-main deployment behavior.
+Release sequence: identify the reviewed commit, run checks, retain its full artifact and the previous release, publish to the host's staging/release slot if available, run smoke tests, then promote via the host's normal procedure. Record commit, artifact, release time and rollback target privately. GitHub Actions validates pull requests with lint, tests and build; it does not deploy or publish artifacts. No Pages configuration is present. External hosting integrations must be confirmed with the repository/hosting owners before assuming push-to-main deployment behavior.
 
 ## Domain, DNS, HTTPS and environment
 
@@ -153,7 +153,7 @@ Retain the previous complete artifact/release and its commit before replacing pr
 | Symptom | Check / remedy |
 | --- | --- |
 | Install/engine error | Check Node/npm versions, run `npm ci` against the committed lockfile and retain its error. Do not fix by deleting/changing the lockfile blindly. |
-| No `npm test` command | Use the documented Node test-runner command. |
+| No `npm test` command | Check that the checkout includes the CI maintenance change; older revisions use `node --experimental-strip-types --test tests/*.test.mjs`. |
 | `/projects` fails only on direct load/refresh | Confirm `dist/projects/index.html` was generated and uploaded, directory-index/internal rewrite behavior and visible pathname. |
 | Projects shows the homepage | Avoid `/projects/index.html` redirects; use `/projects` or `/projects/`. |
 | Blank page, JS MIME error or missing logo | Inspect asset status/content type, domain-root deployment, stale HTML and mixed-release assets. Serve files rather than HTML fallback. |
