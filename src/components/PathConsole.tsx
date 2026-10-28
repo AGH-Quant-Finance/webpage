@@ -36,16 +36,19 @@ export function PathConsole({ paths, copy }: PathConsoleProps) {
           </button>
         ))}
       </div>
-      {paths.map((path) => (
-        <div className="path-panel" key={path.id} id={`path-panel-${path.id}`} role="tabpanel"
-          tabIndex={0} aria-labelledby={`path-tab-${path.id}`} hidden={path.id !== activePath.id}>
-          <div className="path-panel__title"><h2>{path.title}</h2><span className="path-code">{path.code}</span></div>
-          <p className="path-description">{path.description}</p>
-          <p className="code-label">{copy.skillsLabel}</p>
-          <ul className="skill-list">{path.skills.map((skill) => <li key={skill.name}>{skill.name}</li>)}</ul>
-          <div className="path-output"><span>{copy.semesterOutput}</span><strong>{path.output}</strong></div>
-        </div>
-      ))}
+      <div className="path-panels">
+        {paths.map((path) => (
+          <div className="path-panel" key={path.id} id={`path-panel-${path.id}`} role="tabpanel"
+            tabIndex={path.id === activePath.id ? 0 : -1} aria-labelledby={`path-tab-${path.id}`}
+            aria-hidden={path.id !== activePath.id} inert={path.id !== activePath.id}>
+            <div className="path-panel__title"><h2>{path.title}</h2><span className="path-code">{path.code}</span></div>
+            <p className="path-description">{path.description}</p>
+            <p className="code-label">{copy.skillsLabel}</p>
+            <ul className="skill-list">{path.skills.map((skill) => <li key={skill.name}>{skill.name}</li>)}</ul>
+            <div className="path-output"><span>{copy.semesterOutput}</span><strong>{path.output}</strong></div>
+          </div>
+        ))}
+      </div>
     </section>
   );
 }

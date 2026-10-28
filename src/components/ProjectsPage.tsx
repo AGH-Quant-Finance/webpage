@@ -1,17 +1,15 @@
 import { useEffect } from "react";
-import type { Language } from "../content";
 import { useReveal } from "../hooks/useReveal";
 import { projectProposals } from "../projectProposals";
-import { projectPublications, projectsCopy, publicProjectUrl } from "../projects";
+import { projectPublications, projectsCopy as copy, publicProjectUrl } from "../projects";
 
-export default function ProjectsPage({ language }: { language: Language }) {
-  const copy = projectsCopy[language];
+export default function ProjectsPage() {
   useReveal();
 
   useEffect(() => {
     document.title = `${copy.eyebrow} — Quant Finance AGH`;
     document.querySelector('meta[name="description"]')?.setAttribute("content", copy.description);
-  }, [copy]);
+  }, []);
 
   return (
     <div className="projects-page shell">
@@ -20,7 +18,7 @@ export default function ProjectsPage({ language }: { language: Language }) {
         <div><p className="eyebrow">{copy.eyebrow}</p><h1>{copy.title}</h1></div>
         <div className="projects-introduction__copy"><p>{copy.description}</p><p className="projects-formation-note">{copy.formationNote}</p></div>
       </header>
-      {projectProposals[language].groups.map((group) => (
+      {projectProposals.groups.map((group) => (
         <section className="project-group" key={group.id} aria-labelledby={`${group.id}-title`} data-reveal>
           <h2 id={`${group.id}-title`}>{group.title}</h2>
           <ol className="project-list" role="list" start={Number(group.projects[0].index)}>
