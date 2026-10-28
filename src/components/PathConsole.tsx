@@ -25,7 +25,7 @@ export function PathConsole({ paths, copy }: PathConsoleProps) {
 
   return (
     <section className="path-console" aria-label={copy.consoleLabel}>
-      <div className="path-console__header"><span>{copy.consoleLabel}</span><span aria-hidden="true">↗</span></div>
+      <div className="path-console__header">{copy.consoleLabel}</div>
       <div className="path-tabs" role="tablist" aria-label={copy.targetPath}>
         {paths.map((path, index) => (
           <button key={path.id} id={`path-tab-${path.id}`} ref={(node) => { tabsRef.current[index] = node; }}

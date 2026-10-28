@@ -117,8 +117,7 @@ a { color: inherit; }
 .primary-button { min-height: 48px; display: inline-flex; align-items: center; justify-content: space-between; gap: 26px; padding: 12px 20px; border: 1px solid var(--accent); border-radius: 7px; background: var(--accent); color: white; cursor: pointer; text-decoration: none; font-size: .82rem; font-weight: 550; }
 .primary-button:hover { background: #0f3794; border-color: #0f3794; }
 .path-console { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(135deg, #f0f5ff, #fff 70%); }
-.path-console__header { min-height: 52px; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 24px; color: var(--muted); font-size: .75rem; }
-.path-console__header > span:last-child { color: var(--accent); font-size: 1rem; }
+.path-console__header { min-height: 52px; display: flex; align-items: center; padding: 14px 24px; color: var(--muted); font-size: .75rem; }
 .path-tabs { display: flex; gap: 24px; padding-inline: 24px; border-bottom: 1px solid var(--line); }
 .path-tab { min-height: 44px; padding: 10px 0; border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--quiet); cursor: pointer; font-size: .78rem; }
 .path-tab:hover { color: var(--accent); }

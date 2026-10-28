@@ -98,7 +98,7 @@ export const siteCopy: SiteCopy = {
   disciplines: {
     eyebrow: "Two complementary disciplines",
     title: "Research & Development.",
-    research: "Develops and tests quantitative hypotheses.",
+    research: "The Research Section focuses on developing and testing quantitative models for financial markets. We explore volatility forecasting, option hedging, and risk, combining statistics, time-series analysis, and machine learning with experiments in Python. Our work emphasizes clear hypotheses, reproducible results, and rigorous validation against baseline models, accounting for data leakage and transaction costs. Our goal is to understand when a model improves on existing approaches, where it fails, and what its results mean in practice.",
     development: "The Development Section focuses on designing and building software solutions for quantitative finance. We work on projects involving trading systems, market simulations, and high-performance computing, with an emphasis on modern C++ development, system architecture, and practical engineering skills. Our goal is to turn technical knowledge into real-world applications while learning and growing as developers.",
     relationship: "Research questions guide engineering. The tools make those questions testable and the results reproducible.",
   },
@@ -157,9 +157,9 @@ export const siteCopy: SiteCopy = {
     ],
   },
   footer: {
-    description: "A student research and project initiative at AGH University in Kraków.",
+    description: "A student-led science club at AGH University of Krakow.",
     location: "AGH · Kraków",
     navigation: "Navigation",
-    status: "Circle in formation",
+    status: "Science club",
   },
 };
