@@ -1,6 +1,6 @@
 # AGH Quant Finance
 
-Dwujęzyczna strona koła AGH Quant Finance, zbudowana w React, TypeScript i Vite. Przedstawia badania i inżynierię, sposób pracy, społeczność oraz możliwości dołączenia. Osobna strona `/projects` prezentuje cztery kierunki eksploracji.
+Anglojęzyczna strona koła AGH Quant Finance, zbudowana w React, TypeScript i Vite. Przedstawia badania i inżynierię, sposób pracy, społeczność oraz możliwości dołączenia. Osobna strona `/projects` prezentuje cztery kierunki eksploracji.
 
 ## Uruchomienie
 
@@ -22,9 +22,11 @@ npm run build
 ## Struktura
 
 - `src/components/` — komponenty poszczególnych sekcji,
-- `src/content.ts` — komplet tekstów PL/EN i dane ścieżek,
-- `src/projectProposals.ts` — cztery pełne propozycje PL/EN zachowane bez zmian; zwięzłe podsumowania na stronie `/projects` są w `src/projects.ts`,
+- `src/content.ts` — angielskie teksty strony i dane ścieżek,
+- `src/projectProposals.ts` — cztery pełne propozycje projektowe po angielsku; zwięzłe podsumowania na stronie `/projects` są w `src/projects.ts`,
 - `src/styles.css` — tokeny, layout, responsywność i motion.
+
+Panel Research / Development korzysta ze wspólnych wierszy CSS Grid: przełączanie zakładek zachowuje wysokość panelu i położenie opisów, tagów oraz treści poniżej przy dowolnej szerokości. Nieaktywny panel jest niewidoczny, ma `aria-hidden` i `inert`.
 
 ## Przed uruchomieniem rekrutacji
 
@@ -34,23 +36,23 @@ npm run build
 
 ## Identyfikacja wizualna — Phase 1
 
-Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czytelna typografia systemowa i szkło ograniczone do nawigacji. Navbar i hero są dwujęzyczne; nowi użytkownicy zaczynają od wersji EN, a zapisany wybór PL/EN jest zachowany; struktura i treść pozostałych sekcji zostały zachowane.
+Jasny system wizualny oparty na oficjalnym symbolu QFC: niebieskie akcenty, czytelna typografia systemowa i szkło ograniczone do nawigacji. Navbar i hero są po angielsku. Przełącznik języka i obsługa zapisanego wyboru PL/EN zostały usunięte.
 
 [Decyzje projektowe i wyniki weryfikacji](docs/phase-1-review.md).
 
-Podglądy: [PL desktop](docs/screenshots/pl-desktop.png), [PL mobile](docs/screenshots/pl-mobile.png), [EN desktop](docs/screenshots/en-desktop.png), [EN mobile](docs/screenshots/en-mobile.png).
+Historyczne podglądy wersji dwujęzycznej: [PL desktop](docs/screenshots/pl-desktop.png), [PL mobile](docs/screenshots/pl-mobile.png), [EN desktop](docs/screenshots/en-desktop.png), [EN mobile](docs/screenshots/en-mobile.png).
 
 ## Minimalistyczna strona główna — Phase 2
 
-Strona główna ma pięć sekcji: hero z panelem ścieżek, Research & Development, podejście Define → Build → Challenge → Share, społeczność i informacje o dołączeniu. Nawigacja oraz główne CTA prowadzą do aktualnych sekcji. Nowi użytkownicy zaczynają od EN; zapisany wybór PL/EN jest zachowany.
+Strona główna ma pięć sekcji: hero z panelem ścieżek, Research & Development, podejście Define → Build → Challenge → Share, społeczność i informacje o dołączeniu. Nawigacja oraz główne CTA prowadzą do aktualnych sekcji. Strona jest dostępna wyłącznie po angielsku, także dla osób z dawniej zapisanym wyborem PL.
 
-Katalog projektów nie jest renderowany na stronie głównej. `src/projectProposals.ts` zachowuje bez zmian pełne opisy Volatility Forecasting, Hedging with Imperfect Volatility Information, Order Book Engine i Matching Engine w obu językach: metodologię, cele techniczne, zakres, kryteria oceny, oczekiwane rezultaty i proponowane metadane. Dane i strona `/projects` są ładowane w osobnym module, poza stroną główną.
+Katalog projektów nie jest renderowany na stronie głównej. `src/projectProposals.ts` zachowuje bez zmian pełne opisy Volatility Forecasting, Hedging with Imperfect Volatility Information, Order Book Engine i Matching Engine po angielsku: metodologię, cele techniczne, zakres, kryteria oceny, oczekiwane rezultaty i proponowane metadane. Dane i strona `/projects` są ładowane w osobnym module, poza stroną główną.
 
 [Przegląd projektu, weryfikacja i pełne zrzuty strony](docs/phase-2-review.md).
 
 ## Projekty i członkostwo
 
-`/projects` (także `/projects/`) korzysta ze wspólnego nagłówka, stopki i zapisanego wyboru języka. Nawigacja informacyjna ma kolejność Paths → Approach → Community → Projects; Dołącz do nas jest osobnym CTA przy przełączniku języka na desktopie i ostatnią wyróżnioną pozycją menu mobilnego oraz stopki. Strona projektów zawiera link Powrót na stronę główną. Cztery inicjatywy mają status Exploring / Rozpoznanie, a pełne propozycje pozostają w `src/projectProposals.ts`. `src/projects.ts` zawiera krótkie opisy i ręcznie aktualizowany status oraz opcjonalne publiczne linki z datą ich weryfikacji. Obecnie żadne linki projektów nie są podane.
+`/projects` (także `/projects/`) korzysta ze wspólnego anglojęzycznego nagłówka i stopki. Nawigacja informacyjna ma kolejność Paths → Approach → Community → Projects; Join Us jest osobnym CTA na desktopie i ostatnią wyróżnioną pozycją menu mobilnego oraz stopki. Strona projektów zawiera link Back to home. Cztery inicjatywy mają status Exploring, a pełne propozycje pozostają w `src/projectProposals.ts`. `src/projects.ts` zawiera krótkie opisy i ręcznie aktualizowany status oraz opcjonalne publiczne linki z datą ich weryfikacji. Obecnie żadne linki projektów nie są podane.
 
 Build tworzy `dist/projects/index.html`, korzystając z istniejącej aplikacji i bez zależności routingu. Hosting powinien serwować cały `dist` z katalogowymi plikami `index.html`; przekierowanie `/projects` → `/projects/` jest dopuszczalne. Nie wymaga to globalnego SPA rewrite. Jeśli wybrana platforma obsługuje wyłącznie pojedynczy punkt wejścia, należy uzgodnić mapowanie `/projects` do tego pliku. Brak publicznego hostingu oznacza, że test na docelowej platformie jest nadal do wykonania. Nie zmieniono ustawień wdrożenia.
 

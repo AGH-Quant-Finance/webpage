@@ -1,16 +1,13 @@
 import { useEffect, useRef, useState } from "react";
-import type { Language, SiteCopy } from "../content";
+import type { SiteCopy } from "../content";
 import { navigationItems, applicationUrl } from "../navigation";
 
 type HeaderProps = {
   copy: SiteCopy["header"];
   isProjectsPage: boolean;
-  language: Language;
-  languageLabel: string;
-  onToggleLanguage: () => void;
 };
 
-export function Header({ copy, language, languageLabel, onToggleLanguage, isProjectsPage }: HeaderProps) {
+export function Header({ copy, isProjectsPage }: HeaderProps) {
   const items = navigationItems(isProjectsPage);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -56,10 +53,6 @@ export function Header({ copy, language, languageLabel, onToggleLanguage, isProj
         </nav>
         <div className="header-actions">
           <a className="header-join pressable" href={applicationUrl} target="_blank" rel="noopener noreferrer">{copy.joinAction}<span aria-hidden="true">↗</span></a>
-          <button className="language-button pressable" type="button" aria-label={languageLabel} onClick={onToggleLanguage}>
-            <span data-active={language === "pl" ? "" : undefined}>PL</span><span className="language-divider" aria-hidden="true" />
-            <span data-active={language === "en" ? "" : undefined}>EN</span>
-          </button>
           <button className="menu-button pressable" type="button" ref={menuButtonRef} aria-expanded={menuOpen}
             aria-controls="mobile-menu" aria-label={menuOpen ? copy.closeMenu : copy.openMenu} onClick={() => setMenuOpen((open) => !open)}>
             <span /><span />
